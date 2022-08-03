@@ -26,8 +26,8 @@ CREATE TABLE `Account` (
 	Fullname VARCHAR(50) not null,
     DepartmentID INT NOT NULL,
     PositionID INT NOT NULL,
-	FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID), #DepartmentID int from Department
-	FOREIGN KEY (PositionID) REFERENCES `Position` (PositionID), #PositionID from Position table 
+	FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID) ON DELETE CASCADE, #DepartmentID int from Department
+	FOREIGN KEY (PositionID) REFERENCES `Position` (PositionID) ON DELETE CASCADE, #PositionID from Position table 
 	CreateDate DATETIME DEFAULT NOW()
 );
                 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `Group` (
 	GroupName 		VARCHAR(50) NOT NULL UNIQUE,
 	CreatorID 		INT,
 	CreateDate 		DATETIME DEFAULT NOW(),
-	FOREIGN KEY(CreatorID) REFERENCES `Account`(AccountID)
+	FOREIGN KEY(CreatorID) REFERENCES `Account`(AccountID) ON DELETE CASCADE
 );
 
 -- CREATE TABLE Group_Account
@@ -47,8 +47,8 @@ CREATE TABLE Group_Account (
 	GroupID 		INT NOT NULL,
     AccountID 		INT NOT NULL,
     PRIMARY KEY(GroupID,AccountID),
-	FOREIGN KEY (GroupID) REFERENCES `Group`(GroupID),
-	FOREIGN KEY(AccountID) REFERENCES `Account`(AccountID),
+	FOREIGN KEY (GroupID) REFERENCES `Group`(GroupID) ON DELETE CASCADE,
+	FOREIGN KEY(AccountID) REFERENCES `Account`(AccountID) ON DELETE CASCADE,
 	JoinDate 		DATETIME DEFAULT NOW()
 );
 
@@ -75,9 +75,9 @@ CREATE TABLE Question (
     TypeID INT NOT NULL,
    	CreatorID INT  NOT NULL,
     CreateDate DATETIME DEFAULT NOW(),
-    FOREIGN KEY (CategoryID) REFERENCES Category_Question(CategoryID),
-	FOREIGN KEY (TypeID) REFERENCES Type_Question(TypeID),
-	FOREIGN KEY (CreatorID) REFERENCES `Account`(AccountID)
+    FOREIGN KEY (CategoryID) REFERENCES Category_Question(CategoryID) ON DELETE CASCADE,
+	FOREIGN KEY (TypeID) REFERENCES Type_Question(TypeID) ON DELETE CASCADE,
+	FOREIGN KEY (CreatorID) REFERENCES `Account`(AccountID) ON DELETE CASCADE
 	);
 
 -- CREATE TABLE Answer
@@ -87,7 +87,7 @@ CREATE TABLE Answer (
 	Content VARCHAR(100) NOT NULL,
     QuestionID INT NOT NULL,
     isCorrect BIT DEFAULT 1,
-	FOREIGN KEY (QuestionID) REFERENCES Question(QuestionID),
+	FOREIGN KEY (QuestionID) REFERENCES Question(QuestionID) ON DELETE CASCADE,
 	CreateDate DATETIME DEFAULT NOW()
 );
 
@@ -101,8 +101,8 @@ CREATE TABLE Exam (
 	Duration TINYINT NOT NULL,
     CreateDate DATETIME DEFAULT NOW(),
 	CreatorID INT,
-   	FOREIGN KEY (CategoryID) REFERENCES Category_Question(CategoryID),
-	FOREIGN KEY (CreatorID) REFERENCES `Account`(AccountID)
+   	FOREIGN KEY (CategoryID) REFERENCES Category_Question(CategoryID) ON DELETE CASCADE,
+	FOREIGN KEY (CreatorID) REFERENCES `Account`(AccountID) ON DELETE CASCADE
 );
 
 -- CREATE TABLE Exam_Question
@@ -110,8 +110,8 @@ DROP TABLE IF EXISTS Exam_Question;
 CREATE TABLE Exam_Question (
 	ExamID INT NOT NULL,
     QuestionID INT NOT NULL,
-	FOREIGN KEY (ExamID) REFERENCES Exam (ExamID), 
-	FOREIGN KEY (QuestionID) REFERENCES Question (QuestionID),
+	FOREIGN KEY (ExamID) REFERENCES Exam (ExamID) ON DELETE CASCADE, 
+	FOREIGN KEY (QuestionID) REFERENCES Question (QuestionID) ON DELETE CASCADE,
     PRIMARY KEY (ExamID,QuestionID)
 );
 
@@ -245,9 +245,8 @@ VALUES
 			( 8 , 10 ), 
 			( 9 , 9 ), 
 			( 10 , 8 );
-            
-SELECT		*FROM `Exam_Question`;
-
+SELECT * FROM `Account`     ;
+       
 --  if we have more than 1 primary keys, use the following code
 	#CREATE TABLE SV (
     #id INT NOT NULL,
