@@ -33,6 +33,7 @@ HAVING COUNT(QuestionID)>=4;
 #The GROUP BY clause is used to group rows that have the same values. 
 #It summarizing data from the database.
 #SELECT statements... GROUP BY column_name1[,column_name2,...] [HAVING condition];
+#GROUP_CONCAT(): showing all info of all counts
 
 #Question 8: Lấy ra các mã đề thi có thời gian thi >= 60 phút và được tạo trước ngày  20/12/2019
 SELECT ExamID FROM exam
@@ -80,3 +81,16 @@ UPDATE `Group_Account`
 SET GroupID=4
 WHERE AccountID=5;
 SELECT * FROM `Group_Account`;
+
+#Question 16: how to use count function
+SELECT Count(1) -- count(*) means count all rows, this is a slow way of counting
+FROM `Account`
+WHERE PositionID=1;
+
+#COUNT(*)
+#COUNT(1)
+#COUNT(PositionID)
+#MIN
+#MAX
+#AVG
+#SUM
