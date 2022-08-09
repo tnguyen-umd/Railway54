@@ -56,7 +56,41 @@ DELETE FROM question
 WHERE length(Content) >20;
 
 
-#QUESTION 4: Tạo view có chứa danh sách các phòng ban có nhiều nhân viên nhất
-#QUESTION 5: Tạo view có chứa tất các các câu hỏi do user họ Nguyễn tạo
+#QUESTION 4: Tạo view có chứa danh sách các phòng ban(department) có max nhiều nhân viên (accountID
+DROP VIEW IF EXISTS QUESTION_TOO_LONG ;
+CREATE VIEW DEPARTMENT_MAX_EMPLOYEE AS
+	WITH CET_RANDOM AS (
+    SELECT A.departmentName, Count(1) AS NUMBER_OF_EMPLOYEES
+	FROM department AS A
+	INNER JOIN account AS B
+	ON A.departmentID=B.departmentID
+	GROUP BY A.departmentID
+	ORDER BY A.departmentID DESC
+	LIMIT 1)
+    
+    SELECT * FROM CET_RANDOM;
+    ;
+
+
+#QUESTION 5: Tạo view có chứa tất các các cau hoi	QUESTION.CREATORid do user(account.AccountID) họ Nguyễn tạo
+#SELECT * FROM QUESTION;
+#SELECT * FROM account;
+#UPDATE  `account`
+#SET  Fullname='Nguyễn Thi Ha'
+#WHERE accountID=1;
+#UPDATE  `account`
+#SET  Fullname='Nguyễn Van A'
+#WHERE accountID=2;
+#UPDATE  `account`
+#SET  Fullname='Nguyễn Van Phuc'
+#WHERE accountID=3;
+
+	WITH CET_ANOTHER AS 	(SELECT B.Fullname, A.Content AS QUESTION, B.AccountID
+							FROM question AS A
+							INNER JOIN `account` AS B
+							ON A.CREATORid=B.AccountID
+							WHERE B.Fullname LIKE ('Nguyễn%'))
+	SELECT * FROM CET_ANOTHER                     
+                            ;
 
 -- lay ra thong tin cua cau hoi co level tu 2 tro len

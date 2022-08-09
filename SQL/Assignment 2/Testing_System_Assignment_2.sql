@@ -22,8 +22,8 @@ DROP TABLE IF EXISTS `Account`;
 CREATE TABLE `Account` (
 	AccountID INT AUTO_INCREMENT PRIMARY KEY,
 	Email VARCHAR(50) UNIQUE KEY,
-	Username VARCHAR(50) UNIQUE KEY not null,
-	Fullname VARCHAR(50) not null,
+	Username NVARCHAR(50) UNIQUE KEY not null,
+	Fullname NVARCHAR(50) not null,
     DepartmentID INT NOT NULL,
     PositionID INT NOT NULL,
 	FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID) ON DELETE CASCADE, #DepartmentID int from Department
