@@ -1,8 +1,9 @@
 USE TestingSystem;
 
 #Question 1: Tạo store để người dùng nhập vào tên phòng ban và in ra tất cả các  account thuộc phòng ban đó
-DELIMITER $$
+
 DROP PROCEDURE IF EXISTS GET_DEPARTMENT_ACCOUNT;
+DELIMITER $$
 CREATE PROCEDURE GET_DEPARTMENT_ACCOUNT (
 				IN IN_DEPARTMENT_NAME VARCHAR(50) 
 				)
@@ -17,10 +18,33 @@ BEGIN
 END$$
 
 CALL testingsystem.GET_DEPARTMENT_ACCOUNT('sale');
+DELIMITER;
+
+-- QUESTION 1: Tạo store để người dùng nhập vào tên phòng ban và in ra tất cả các  account thuộc phòng ban đó
+-- CREATE FUNCTION
+
+DROP FUNCTION IF EXISTS FUNCTION_DEPARTMENT_ACCOUNT;
+DELIMITER $$
+CREATE FUNCTION FUNCTION_DEPARTMENT_ACCOUNT 
+				(IN_DEPARTMENT_NAME VARCHAR(50) /*this is the input*/) RETURNS INT DETERMINISTIC READS SQL DATA-- this is the output
+BEGIN
+				DECLARE v_account_id INT; -- set a variable
+                
+                SELECT A.AccountID #INTO v_account_id       #B.DepartmentName, A.Fullname, 
+                FROM `account` A
+                INNER JOIN department B
+                ON A.departmentID=B.departmentID
+                WHERE  B.DepartmentName=IN_DEPARTMENT_NAME;
+                
+                RETURN v_account_id; -- return the variable to the RETURN value of the function
+END$$
+DELIMITER;
+
+SELECT testingsystem.FUNCTION_DEPARTMENT_ACCOUNT('sale');
 
 #Question 2: Tạo store để in ra số lượng account trong mỗi group
-DELIMITER $$
 DROP PROCEDURE IF EXISTS GET_ACCOUNT_PER_GROUP;
+DELIMITER $$
 CREATE PROCEDURE GET_ACCOUNT_PER_GROUP (
 				IN IN_GROUP_ID INT 
 				)
@@ -37,8 +61,8 @@ END$$
 -- USE
 
 #Question 3: Tạo store để thống kê mỗi type question có bao nhiêu question được tạo  trong tháng hiện tại
-DELIMITER $$
 DROP PROCEDURE IF EXISTS GET_QUESTIONS_CREATED_THIS_MONTH;
+DELIMITER $$
 CREATE PROCEDURE GET_QUESTIONS_CREATED_THIS_MONTH (
 				IN IN_QUESTION_TYPE_ID INT 
 				)
@@ -63,8 +87,8 @@ END$$
 #			(N'Câu Hỏi về PHP' , 10 , '2' , '2' ,'2022-08-05');
 
 #Question 4: Tạo store để trả ra id của type question có nhiều câu hỏi nhất
-DELIMITER $$
 DROP PROCEDURE IF EXISTS TYPE_MAX_QUESTION;
+DELIMITER $$
 CREATE PROCEDURE TYPE_MAX_QUESTION (
 				OUT OUT_TYPE_ID INT)
 
@@ -100,21 +124,111 @@ SELECT TypeName
 FROM type_question
 WHERE typeID=@typeID;
 
-#Question 6: Viết 1 store cho phép người dùng nhập vào 1 chuỗi và trả về group có tên 
- #chứa chuỗi của người dùng nhập vào hoặc trả về user có username chứa chuỗi của người dùng nhập vào
- 
+#Question 6: Viết 1 store cho phép người dùng nhập vào 1 chuỗi 
+#trả về group có tên chứa chuỗi của người dùng nhập vào 
+#hoặc trả về user có username chứa chuỗi của người dùng nhập vào
+
+DROP PROCEDURE IF EXISTS USER_INPUT_STRING;
+DELIMITER $$
+CREATE PROCEDURE USER_INPUT_STRING (
+				IN IN_USER_ID INT,
+                IN USER_STRING CHAR(50))
+
+			BEGIN
+				        
+				SELECT A.username, USER_STRING
+				FROM `account` A
+                WHERE A.accountID=IN_USER_ID;
+			END$$
+DELIMITER   ;         
+
 #Question 7: Viết 1 store cho phép người dùng nhập vào thông tin fullName, email và  trong store sẽ tự động gán:
-#username sẽ giống email nhưng bỏ phần @..mail đi positionID: sẽ có default là developer
+#username sẽ giống email nhưng bỏ phần @..mail đi 
+#positionID: sẽ có default là developer
 #departmentID: sẽ được cho vào 1 phòng chờ Sau đó in ra kết quả tạo thành công
- 
+
+DROP PROCEDURE IF EXISTS USER_INPUT_INFO;
+#INSERT INTO Department(DepartmentName) VALUES ('Phong cho');
+DELIMITER $$
+CREATE PROCEDURE USER_INPUT_INFO (
+				IN IN_FULLNAME NVARCHAR(100),
+				IN IN_EMAIL VARCHAR(100))
+
+			BEGIN
+            INSERT INTO `Account`(FullName, Email, Username, DepartmentID , PositionID, CreateDate)
+				VALUES 		
+					(IN_FULLNAME , IN_EMAIL, 'nothing',12 , 1,NOW());
+                    
+				UPDATE account 
+                SET Username = SUBSTRING_INDEX(Email, '@',1); # this is to remove everything after @gmail.com
+                    
+				SELECT *, 'New account created'
+				FROM `account`
+                WHERE account.FullName=IN_FULLNAME;
+			END$$
+DELIMITER   ;       
+
 #Question 8: Viết 1 store cho phép người dùng nhập vào Essay hoặc Multiple-Choice để thống kê câu hỏi essay hoặc multiple-choice nào có content dài nhất
 
+DROP PROCEDURE IF EXISTS QUESTION_TYPE_LONGEST_CONTENT;
+DELIMITER $$
+CREATE PROCEDURE QUESTION_TYPE_LONGEST_CONTENT (
+				IN_TYPE_QUESTION ENUM('Essay','Multiple-Choice'))
+BEGIN
+				SELECT A.TypeName, B.QuestionID, LENGTH(B.content) as CONTENT_LENGTH
+				FROM type_question A
+				INNER JOIN question B
+				ON A.TypeID=B.TypeID
+				WHERE A.TypeName=IN_TYPE_QUESTION
+				GROUP BY LENGTH(B.content)
+				LIMIT 1;
+END$$
+DELIMITER   ;  
+
 #Question 9: Viết 1 store cho phép người dùng xóa exam dựa vào ID
+DROP PROCEDURE IF EXISTS REMOVE_EXAM_ID;
+DELIMITER $$
+CREATE PROCEDURE REMOVE_EXAM_ID (
+				IN_EXAM_ID INT)
+BEGIN
+				DELETE FROM exam
+				WHERE examID=IN_EXAM_ID;
+                SELECT * FROM Exam;
+END$$
+DELIMITER   ;  
 
 #Question 10: Tìm ra các exam được tạo từ 3 năm trước và xóa các exam đó đi (sử  dụng store ở câu 9 để xóa)
- -- Sau đó in số lượng record đã remove từ các table liên quan trong khi 
- -- removing
-#Question 11: Viết store cho phép người dùng xóa phòng ban bằng cách người dùng  nhập vào tên phòng ban và các account thuộc phòng ban đó sẽ được  chuyển về phòng ban default là phòng ban chờ việc
+ -- Sau đó in số lượng record đã remove từ các table liên quan trong khi remove
+
+DROP PROCEDURE IF EXISTS REMOVE_EXAM_3YR_OLD;
+DELIMITER $$
+CREATE PROCEDURE REMOVE_EXAM_3YR_OLD ()
+BEGIN
+				SELECT count(ExamID) as Number_Of_Exam_Deleted
+                FROM exam
+				WHERE createDate < (now() - interval 3 year);
+				
+END$$
+DELIMITER   ;  
+ call testingsystem.REMOVE_EXAM_3YR_OLD();
+
+ 
+/*#Question 11: Viết store cho phép người dùng Delete Department (xóa phòng ban) bằng cách người dùng  nhập vào tên phòng ban 
+ và các account thuộc phòng ban đó sẽ được  chuyển về phòng ban default là phòng ban chờ việc*/
+ 
+ SELECT * 
+ FROM Department A
+ INNER JOIN account B
+ ON A.DepartmentID=B.DepartmentID
+ WHERE departmentName='sale'
+ 
+ 
+ 
+	using DepartmentName
+    Account change to DEFAULT 'chờ việc'
+    
+    
+ 
 #Question 12: Viết store để in ra mỗi tháng có bao nhiêu câu hỏi được tạo trong năm  nay
 #Question 13: Viết store để in ra mỗi tháng có bao nhiêu câu hỏi được tạo trong 6  tháng gần đây nhất
 #Nếu tháng nào không có thì sẽ in ra là "không có câu hỏi nào trong tháng"

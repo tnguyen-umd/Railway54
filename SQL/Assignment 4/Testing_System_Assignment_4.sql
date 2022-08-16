@@ -76,11 +76,10 @@ GROUP BY a.CategoryID;
 #			('12' , 'Câu hỏi về PHP' ,'3', '2' , '3' ,'2020-04-15');
             
 #Question 7: Thông kê mỗi Question được sử dụng trong bao nhiêu Exam
-SELECT a.questionID, count(B.QuestionID) as Number_Exams
-FROM question A
-LEFT JOIN exam_question B
-ON A.QuestionID=B.QuestionID
-GROUP BY B.QuestionID;
+SELECT A.questionID, B.ExamID, COUNT(B.questionID) AS COUNT
+FROM exam_question B
+RIGHT JOIN question A USING(questionID)
+GROUP BY A.questionID;
 
 #Question 8: Lấy ra Question có nhiều câu trả lời nhất
 #SELECT * FROM ANSWER;
@@ -103,15 +102,7 @@ Right JOIN `group` A
 ON A.GroupID=B.GroupID
 GROUP BY a.groupID;
 
-SELECT groupID, count(groupID) AS NUMBER_ACCOUNT
-FROM group_account
-GROUP BY groupID
 
-SELECT *
-FROM `group` A 
-JOIN group_account B
-ON A.GroupID=B.GroupID
- 
 #Question 10: Tìm chức vụ có ít người nhất
 SELECT PositionID, count(1) as Number_Position
 FROM account

@@ -19,8 +19,9 @@ SELECT * FROM NHAN_VIEN_SALE;
 		-- CREATED CTE_Counting TO STORE USER INFO AND COUNT GROUPID
 		-- CREATED SUBQUERY TO COUNT MAX GROUPID
 		-- COMPARE CTE_Counting's Count with Count from Subquery
+DROP VIEW IF EXISTS Account_with_most_group;
 CREATE VIEW Account_with_most_group AS
-	WITH CTE_Counting AS (SELECT A.accountid,a.username,b.groupid, COUNT(B.AccountID) AS COUNT
+	WITH CTE_Counting AS (SELECT A.accountID, a.username,b.groupid, COUNT(B.AccountID) AS COUNT
 	FROM account A
 	INNER JOIN `group_account` B
 	ON A.AccountID=B.AccountID
@@ -29,7 +30,8 @@ CREATE VIEW Account_with_most_group AS
     
     SELECT * FROM CTE_Counting
 	WHERE CTE_Counting.COUNT =				(SELECT MAX(Total) 
-											FROM (SELECT COUNT(1) AS Total FROM group_account AS G GROUP BY G.AccountID) AS Results
+											FROM (SELECT COUNT(1) AS Total 
+                                            FROM group_account AS G GROUP BY G.AccountID) AS Results
 											);
 
 			#CREATE VIEW Account_with_most_group AS
@@ -48,7 +50,7 @@ DROP VIEW IF EXISTS QUESTION_TOO_LONG ;
 CREATE VIEW QUESTION_TOO_LONG AS
 	WITH CET_Long_question AS 
     (SELECT *, LENGTH(CONTENT) AS LENGTH FROM testingsystem.question
-    WHERE  length(Content) >20
+    WHERE  length(Content) >10
     )
     SELECT * FROM CET_Long_question;
     			-- DELETE LONG QUESTION FROM TABLE QUESTION 
@@ -89,7 +91,8 @@ CREATE VIEW DEPARTMENT_MAX_EMPLOYEE AS
 							FROM question AS A
 							INNER JOIN `account` AS B
 							ON A.CREATORid=B.AccountID
-							WHERE B.Fullname LIKE ('Nguyễn%'))
+							WHERE B.Fullname LIKE ('Nguyễn%')
+                            )
 	SELECT * FROM CET_ANOTHER                     
                             ;
 
