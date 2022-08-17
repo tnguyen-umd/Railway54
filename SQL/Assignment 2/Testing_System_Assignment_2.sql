@@ -128,7 +128,8 @@ VALUES
 			(N'Giám đốc' ),
 			(N'Thư kí' ),
 			(N'No person' ),
-			(N'Bán hàng' );
+			(N'Bán hàng' ),
+            (N'Cho viec' );
 
 INSERT INTO `Position`(PositionName) 
 VALUES 		('Dev'),

@@ -199,15 +199,17 @@ DELIMITER   ;
 
 #Question 10: Tìm ra các exam được tạo từ 3 năm trước và xóa các exam đó đi (sử  dụng store ở câu 9 để xóa)
  -- Sau đó in số lượng record đã remove từ các table liên quan trong khi remove
-
 DROP PROCEDURE IF EXISTS REMOVE_EXAM_3YR_OLD;
 DELIMITER $$
 CREATE PROCEDURE REMOVE_EXAM_3YR_OLD ()
 BEGIN
-				SELECT count(ExamID) as Number_Of_Exam_Deleted
-                FROM exam
-				WHERE createDate < (now() - interval 3 year);
+				DECLARE v_Exams_Deleted INT;
 				
+				SET v_Exams_Deleted = (SELECT count(ExamID) as Number_Of_Exam_Deleted
+										FROM exam
+										WHERE createDate < (now() - interval 3 year));                                                
+				DELETE FROM exam WHERE createDate < (now() - interval 3 year);
+                SELECT v_Exams_Deleted AS Exams_Deleted;
 END$$
 DELIMITER   ;  
  call testingsystem.REMOVE_EXAM_3YR_OLD();
@@ -215,20 +217,113 @@ DELIMITER   ;
  
 /*#Question 11: Viết store cho phép người dùng Delete Department (xóa phòng ban) bằng cách người dùng  nhập vào tên phòng ban 
  và các account thuộc phòng ban đó sẽ được  chuyển về phòng ban default là phòng ban chờ việc*/
+
+DROP PROCEDURE IF EXISTS Delete_Set_Default_Department;
+DELIMITER $$
+CREATE PROCEDURE Delete_Set_Default_Department (IN In_Department_Name CHAR(50))
+BEGIN
+				DECLARE v_DepartmentID INT;
  
- SELECT * 
- FROM Department A
- INNER JOIN account B
- ON A.DepartmentID=B.DepartmentID
- WHERE departmentName='sale'
+				SET v_DepartmentID = 	(SELECT DepartmentID
+										FROM Department
+										WHERE departmentName=In_Department_Name);
+				UPDATE  `account`
+                SET DepartmentID=12
+                WHERE DepartmentID=v_DepartmentID;
+                                        
+END$$
+DELIMITER   ;   
  
+CALL Delete_Set_Default_Department('sale');
+
+#Question 12: Viết store để in ra mỗi tháng có bao nhiêu câu hỏi được tạo trong năm nay
+	#this year, each month: count created question
+
+DROP PROCEDURE IF EXISTS Question_Created_per_Month;
+DELIMITER $$
+CREATE PROCEDURE Question_Created_per_Month (IN In_month INT)
+BEGIN
+				
+			SELECT QuestionID, 	EXTRACT(YEAR FROM createDate) AS YEAR,
+								EXTRACT(MONTH FROM createDate) AS MONTH,
+                                COUNT(createDate) AS Number_of_Question_Created
+			FROM question
+			WHERE YEAR(createDate)=YEAR(CURDATE()) AND 
+			MONTH(createDate)=In_month
+			GROUP BY YEAR(createDate);
+                                        
+END$$
+DELIMITER   ;   
  
- 
-	using DepartmentName
-    Account change to DEFAULT 'chờ việc'
-    
-    
- 
-#Question 12: Viết store để in ra mỗi tháng có bao nhiêu câu hỏi được tạo trong năm  nay
+CALL Question_Created_per_Month(8);
+
+
 #Question 13: Viết store để in ra mỗi tháng có bao nhiêu câu hỏi được tạo trong 6  tháng gần đây nhất
 #Nếu tháng nào không có thì sẽ in ra là "không có câu hỏi nào trong tháng"
+DROP PROCEDURE IF EXISTS Questions_Created_Last_Six_Months;
+DELIMITER $$
+CREATE PROCEDURE Questions_Created_Last_Six_Months ()
+BEGIN	
+
+		SELECT MONTHNAME(createdate) AS Past_Six_Months, 
+						COUNT(1) AS Number_of_Question_Created
+		FROM question
+		WHERE MONTH(createDate) = MONTH(date_sub(NOW(), INTERVAL 6 MONTH))
+		AND YEAR(createDate)=YEAR(CURDATE())
+
+		UNION
+		SELECT MONTHNAME(createdate) AS Past_Six_Months, COUNT(1) AS Number_of_Question_Created
+		FROM question
+		WHERE MONTH(createDate) = MONTH(date_sub(NOW(), INTERVAL 5 MONTH))
+		AND YEAR(createDate)=YEAR(CURDATE())
+
+		UNION
+		SELECT MONTHNAME(createdate) AS Past_Six_Months, COUNT(1) AS Number_of_Question_Created
+		FROM question
+		WHERE MONTH(createDate) = MONTH(date_sub(NOW(), INTERVAL 4 MONTH))
+		AND YEAR(createDate)=YEAR(CURDATE())
+
+		UNION
+		SELECT MONTHNAME(createdate) AS Past_Six_Months, COUNT(1) AS Number_of_Question_Created
+		FROM question
+		WHERE MONTH(createDate) = MONTH(date_sub(NOW(), INTERVAL 3 MONTH))
+		AND YEAR(createDate)=YEAR(CURDATE())
+
+		UNION
+		SELECT MONTHNAME(createdate) AS Past_Six_Months, COUNT(1) AS Number_of_Question_Created
+		FROM question
+		WHERE MONTH(createDate) = MONTH(date_sub(NOW(), INTERVAL 2 MONTH))
+		AND YEAR(createDate)=YEAR(CURDATE())
+
+		UNION
+		SELECT MONTHNAME(createdate) AS Past_Six_Months, COUNT(1) AS Number_of_Question_Created
+		FROM question
+		WHERE MONTH(createDate) = MONTH(date_sub(NOW(), INTERVAL 1 MONTH))
+		AND YEAR(createDate)=YEAR(CURDATE())
+
+		UNION
+		SELECT MONTHNAME(createdate) AS Past_Six_Months, COUNT(1) AS Number_of_Question_Created
+		FROM question
+		WHERE MONTH(createDate) = MONTH(date_sub(NOW(), INTERVAL 0 MONTH))
+		AND YEAR(createDate)=YEAR(CURDATE())
+
+		GROUP BY MONTH(createDate);
+                                        
+END$$
+DELIMITER   ;  
+
+CALL Questions_Created_Last_Six_Months();
+
+INSERT INTO question(content,CategoryID,TypeID,CreatorID,createDate)
+VALUES
+		('Ruby',5,2,2,'2022-2-21'),
+        ('Python',5,2,2,'2022-3-21'),
+        ('Java',5,2,2,'2022-4-21'),
+        ('C++',5,2,2,'2022-5-21'),
+        ('Ruby',5,2,2,'2022-6-21'),
+        ('Java',5,2,2,'2022-7-21'),
+        ('Python',5,2,2,'2022-8-21')
+        ;
+
+
+
