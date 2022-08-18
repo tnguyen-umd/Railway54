@@ -1,13 +1,14 @@
 package TestingSystem;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Exam {
-	int		id;
-	String	code;
-	String	title;
-	CategoryQuestion	category;
-	int		duration;
-	Account	account;
-	Date	createDate;
+	int			id;
+	String		code;
+	String		title;
+	String		category;
+	Question[]	questions;
+	int			duration;
+	Account[]	accounts;
+	LocalDate		createDate;
 
 }

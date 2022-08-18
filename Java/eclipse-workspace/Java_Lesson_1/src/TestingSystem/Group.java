@@ -1,11 +1,10 @@
 package TestingSystem;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Group {
 	int		id;
-	String	groupName;
-	int		creator;
+	String	name;
 	Account[]	participants;
-	Date	createDate;
+	LocalDate	createDate;
 }
 

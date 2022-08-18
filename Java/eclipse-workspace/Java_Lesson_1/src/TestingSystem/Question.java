@@ -1,12 +1,12 @@
 package TestingSystem;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Question {
 	short				id;
 	String				content;
-	CategoryQuestion	category;
-	TypeQuestion		isType;
-	Account				creatorID;
-	Date				createDate;
+	TypeName			isQuestionType;
+	String				category;
+	Account				account;
+	LocalDate				createDate;
 	
 }

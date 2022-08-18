@@ -1,13 +1,14 @@
 package TestingSystem;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Account {
 	int			id;
 	String		Email;
-	Department[]	departments;//this is foreign key from Department class
 	String		userName;
-	String		fullName;
+	String		fullName;	
+	Department	department;//this is foreign key from Department class
+	Group[]		groups;
 	Position	position;
-	Date		createDate;
+	LocalDate	createDate;
 
 }

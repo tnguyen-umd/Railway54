@@ -1,6 +1,6 @@
 package TestingSystem;
 
 public class Position {
-	int 			PositionID;
-	PositionName	isPositionName;
+	int 			id;
+	PositionName	isPosition;
 }
