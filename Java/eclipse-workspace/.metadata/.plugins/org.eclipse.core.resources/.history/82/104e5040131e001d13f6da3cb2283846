@@ -1,0 +1,12 @@
+import java.util.Date;
+
+public class Answer {
+	int		id;
+	String	code;
+	String	title;
+	CategoryQuestion	category;
+	int		duration;
+	Account	account;
+	Date	createDate;
+
+}

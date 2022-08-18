@@ -1,0 +1,13 @@
+package TestingSystem;
+import java.util.Date;
+
+public class Exam {
+	int		id;
+	String	code;
+	String	title;
+	CategoryQuestion[]	categories;
+	int		duration;
+	Account[]	accounts;
+	Date	createDate;
+
+}

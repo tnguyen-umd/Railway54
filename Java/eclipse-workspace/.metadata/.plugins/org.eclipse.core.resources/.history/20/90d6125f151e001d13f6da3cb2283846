@@ -1,0 +1,6 @@
+package TestingSystem;
+
+public class Position {
+	byte 			PositionID;
+	PositionName	isPositionName;
+}

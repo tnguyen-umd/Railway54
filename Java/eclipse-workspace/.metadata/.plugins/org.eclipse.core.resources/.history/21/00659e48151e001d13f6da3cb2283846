@@ -1,0 +1,13 @@
+package TestingSystem;
+import java.util.Date;
+
+public class Account {
+	int		accountID;
+	String		Email;
+	Department	department;//this is foreign key from Department class
+	String		userName;
+	String		fullName;
+	Position	position;
+	Date		createDate;
+
+}
