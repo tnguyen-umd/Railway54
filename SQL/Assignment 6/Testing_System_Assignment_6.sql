@@ -236,7 +236,7 @@ DELIMITER   ;
  
 CALL Delete_Set_Default_Department('sale');
 
-#Question 12: Viết store để in ra mỗi tháng có bao nhiêu câu hỏi được tạo trong năm nay
+#Question 12: Viết storeD PROCEDURE để in ra mỗi tháng có bao nhiêu câu hỏi được tạo trong năm nay
 	#this year, each month: count created question
 
 DROP PROCEDURE IF EXISTS Question_Created_per_Month;
@@ -257,6 +257,52 @@ DELIMITER   ;
  
 CALL Question_Created_per_Month(8);
 
+######################################################################
+##Viết storeD PROCEDURE để in ra mỗi tháng có bao nhiêu câu hỏi 
+
+##được tạo trong năm nay
+DROP PROCEDURE IF EXISTS Question_Created_per_Month1;
+DELIMITER $$
+CREATE PROCEDURE Question_Created_per_Month1 ()
+BEGIN
+
+	WITH CTE_random AS (
+			SELECT 1 AS `MONTH` 
+            UNION
+            SELECT 2 AS `MONTH` 
+            UNION
+            SELECT 3 AS `MONTH` 
+            UNION
+            SELECT 4 AS `MONTH` 
+            UNION
+            SELECT 5 AS `MONTH` 
+            UNION
+            SELECT 6 AS `MONTH` 
+            UNION
+            SELECT 7 AS `MONTH` 
+            UNION
+            SELECT 8 AS `MONTH` 
+            UNION
+            SELECT 9 AS `MONTH` 
+            UNION
+            SELECT 10 AS `MONTH` 
+            UNION
+            SELECT 11 AS `MONTH` 
+            UNION
+            SELECT 12 AS `MONTH` )
+			
+            SELECT A.`MONTH`, COUNT(B.categoryID) AS so_luong
+            FROM CTE_random A
+            LEFT JOIN 	(SELECT * FROM
+						question
+						WHERE YEAR(createDate)=YEAR(NOW())) B
+                        
+            ON A.`MONTH`=MONTH(B.createDate)
+            GROUP BY A.`MONTH`;
+END$$
+DELIMITER   ;   
+ 
+CALL Question_Created_per_Month1();
 
 #Question 13: Viết store để in ra mỗi tháng có bao nhiêu câu hỏi được tạo trong 6  tháng gần đây nhất
 #Nếu tháng nào không có thì sẽ in ra là "không có câu hỏi nào trong tháng"
@@ -304,7 +350,7 @@ BEGIN
 		UNION
 		SELECT MONTHNAME(createdate) AS Past_Six_Months, COUNT(1) AS Number_of_Question_Created
 		FROM question
-		WHERE MONTH(createDate) = MONTH(date_sub(NOW(), INTERVAL 0 MONTH))
+		WHERE MONTH(createDate) = MONTH(now())
 		AND YEAR(createDate)=YEAR(CURDATE())
 
 		GROUP BY MONTH(createDate);
@@ -325,5 +371,38 @@ VALUES
         ('Python',5,2,2,'2022-8-21')
         ;
 
+
+DROP PROCEDURE IF EXISTS Question_last_6_months;
+DELIMITER $$
+CREATE PROCEDURE Question_last_6_months ()
+BEGIN
+
+	WITH CTE_random1 AS (
+			SELECT MONTH(date_sub(NOW(), INTERVAL 5 MONTH)) AS `MONTH` , YEAR(date_sub(NOW(), INTERVAL 5 MONTH)) AS `YEAR`
+            UNION
+            SELECT MONTH(date_sub(NOW(), INTERVAL 4 MONTH)) AS `MONTH`, YEAR(date_sub(NOW(), INTERVAL 4 MONTH)) AS `YEAR`
+            UNION
+            SELECT MONTH(date_sub(NOW(), INTERVAL 3 MONTH)) AS `MONTH`, YEAR(date_sub(NOW(), INTERVAL 3 MONTH)) AS `YEAR`
+            UNION
+            SELECT MONTH(date_sub(NOW(), INTERVAL 2 MONTH)) AS `MONTH`, YEAR(date_sub(NOW(), INTERVAL 2 MONTH)) AS `YEAR`
+            UNION
+            SELECT MONTH(date_sub(NOW(), INTERVAL 1 MONTH)) AS `MONTH`, YEAR(date_sub(NOW(), INTERVAL 1 MONTH)) AS `YEAR`
+            UNION
+            SELECT MONTH(now()) AS `MONTH`, YEAR(NOW()) AS `YEAR`)
+			
+            SELECT A.`MONTH`, A.`YEAR`, CASE WHEN COUNT(B.categoryID)=0 THEN 'không có câu hỏi nào trong tháng'
+            ELSE COUNT(B.categoryID)
+			END AS so_luong
+            FROM CTE_random1 A
+            LEFT JOIN 	(SELECT * FROM
+						question
+						WHERE createDate>=date_sub(NOW(), INTERVAL 6 MONTH)) B
+               
+            ON A.`MONTH`=MONTH(B.createDate)
+            GROUP BY A.`MONTH`;
+END$$
+DELIMITER   ;   
+ 
+CALL Question_last_6_months();
 
 
