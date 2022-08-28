@@ -183,65 +183,9 @@ public class FlowControl {
 		 * "Nhân viên này là người hóng chuyện, tham gia tất cả các group"
 		 */	
 				
-
-//Question 3:
-	//Sử dụng toán tử ternary để làm Question 1
-	System.out.println(account2.department==null ? "this account does not have a department" : "The department of this account is: " + account2.department.name);
-	
-	System.out.printf("%s %d", "Nam", 16); //%s is string, %d is number
-	System.out.printf("15%s %15d %n", "Nam", 16); // print using space
-
-	
-	// Exercise 2
-	int num1=9850;
-	System.out.printf("%d %n", num1);;
-	
-	int num2=100000000;
-	System.out.printf("%,d", num2);;
-	
-	/*
-	 * double num3=6.78675; System.out.printf("%5.2", num2);;
-	 */
 	
 
-	//Exercise 5
 	
-	//Question 1: nhap 3 so
-	Scanner scanner = new Scanner(System.in);
-	System.out.print("Please input a number: ");
-	int number1= scanner.nextInt();
-	System.out.println(number1);
-	
-	System.out.print("Please input a number: ");
-	int number2= scanner.nextInt();
-	System.out.println(number2);
-	
-	System.out.print("Please input a number: ");
-	int number3= scanner.nextInt();
-	System.out.println(number3);
-	
-	System.out.println("List of numbers: " + number1+" "+ number2+" "+ number3);
-	
-	//Question 3: nhan ho va ten
-	Scanner demo = new Scanner(System.in);
-	System.out.print("Please input first name: ");
-	String first1=demo.next();
-	
-	System.out.print("Please input last name: ");
-	String last1=demo.next();
-	
-	System.out.println(abc);
-	System.out.println("full name: " + first1 + " "+ last1);
-	
-	//use random number
-	Random random1 = new Random();
-	int x = random1.nextInt(6)+10;//random between 10-15
-	System.out.println(x);
-	
-	//random number co 3 chu so
-	Random random2 = new Random();
-	int y = random1.nextInt(6)+10;
-	System.out.println(x);
 	}
 
 }

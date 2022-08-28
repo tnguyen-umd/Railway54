@@ -1,201 +1,114 @@
 package TestingSystem_Assignment_2;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Program {
-public static void main(String[]args) {
-	//logic
-	Department department1=new Department();
-	department1.id=1;
-	department1.name="Sale";
-	
-	Department department2=new Department();
-	department2.id=2;
-	department2.name="Marketing";
-	
-	Department department3=new Department();
-	department3.id=3;
-	department3.name="Phong Cho";
-	
-	Position position1=new Position();
-	position1.id=1;
-	position1.isPosition=PositionName.DEV;
-	
-	Position position2=new Position();
-	position2.id=2;
-	position2.isPosition=PositionName.TEST;
-	
-	Position position3=new Position();
-	position3.id=3;
-	position3.isPosition=PositionName.PM;
-	
-	Group g1=new Group();
-	g1.id=1;
-	g1.name="Travelers";
-	g1.createDate=LocalDate.now();
-	
-	Group g2=new Group();
-	g2.id=2;
-	g2.name="Musicians";
-	g2.createDate=LocalDate.now();
-	
-	Group g3=new Group();
-	g3.id=3;
-	g3.name="Drummers";
-	g3.createDate=LocalDate.now();
-	
-	Account a1=new Account();
-	a1.id=1;
-	a1.Email="anguyen@gmail.com";
-	a1.userName="anguyen";
-	a1.fullName="Nguyen Van A";
-	a1.department=department1;
-	
-	//assign 2 groups to account a1 using ARRAY
-	Group[] a1Group= {g1,g2};
-	a1.groups=a1Group;
-	
-	a1.position=position1;
-	a1.createDate=LocalDate.of(2020,1,13);
-	
-	Account a2=new Account();
-	a2.id=2;
-	a2.Email="bnguyen@gmail.com";
-	a2.userName="bnguyen";
-	a2.fullName="Nguyen Van B";
-	a2.department=department2;
-	
-	//assign 2 groups to account a1 using ARRAY
-	Group[] a2Group= {g2,g3};
-	a2.groups=a2Group;
-	
-	a2.position=position2;
-	a2.createDate=LocalDate.of(2021,11,13);
+	public static void main(String[] args) {
 
-	Account a3=new Account();
-	a3.id=3;
-	a3.Email="cnguyen@gmail.com";
-	a3.userName="cnguyen";
-	a3.fullName="Nguyen Van C";
-	a3.department=department3;
-	
-	//assign 2 groups to account a1 using ARRAY
-	Group[] a3Group= {g2,g3};
-	a3.groups=a3Group;
-	
-	a3.position=position3;
-	a3.createDate=LocalDate.of(2022,11,13);
-	
-	Question q1=new Question();
-	q1.id=1;
-	q1.content="Java question";
-	q1.category="Java";
-	q1.isQuestionType=TypeName.ESSAY;
-	q1.account=a1;
-	q1.createDate=LocalDate.now();
-	
-	Question q2=new Question();
-	q2.id=2;
-	q2.content="Ruby question";
-	q2.category="Ruby";
-	q2.isQuestionType=TypeName.MULTIPLE_CHOICE;
-	q2.account=a2;
-	q2.createDate=LocalDate.of(2021,10,23);
-	
-	Question q3=new Question();
-	q3.id=2;
-	q3.content="SQL question";
-	q3.category="SQL";
-	q3.isQuestionType=TypeName.MULTIPLE_CHOICE;
-	q3.account=a3;
-	q3.createDate=LocalDate.of(2022,1,23);
-	
-	Answer an1=new Answer();
-	an1.id=1;
-	an1.content="Java answer 1";
-	an1.question=q1;
-	an1.isCorrect=true;
-	
-	Answer an2=new Answer();
-	an2.id=2;
-	an2.content="Ruby answer 1";
-	an2.question=q2;
-	an2.isCorrect=false;
-	
-	Answer an3=new Answer();
-	an3.id=3;
-	an3.content="SQL answer 1";
-	an3.question=q3;
-	an3.isCorrect=true;
-	
-	
-	Exam ex1=new Exam();
-	ex1.id=1;
-	ex1.code="EX001";
-	ex1.title="First exam";
-	ex1.category="First level";
-	
-	//exam1 has 2 questions q1 and q2
-	Question[]	ex1Question= {q1,q2};
-	ex1.questions=ex1Question;
-	
-	ex1.duration=120;
-	
-	//exam1 has 3 users a1, a2, a3
-	Account[]	ex1Account= {a1,a2,a3};
-	ex1.accounts=ex1Account;
+		// SET DEPARTMENT INFO
+		Department d1 = new Department(1, "Sale");
+		Department d2 = new Department(2, "Marketing");
+		Department d3 = new Department(3, "Technical");
 
-	ex1.createDate=LocalDate.of(2021, 12, 31);
-	
-	System.out.println("Thong tin phong ban 1");
-	System.out.println("name: " + department1.name);
-	System.out.println("id: " + department1.id);
-	System.out.println("\n");
-	
-	System.out.println("Thong tin account 1");
-	System.out.println("id: " + a1.id);
-	System.out.println("Email: " + a1.Email);
-	System.out.println("Fullname: " + a1.fullName);
-	System.out.println("Department: " + a1.department);
-	System.out.println("Group: " + a1.groups);
-	System.out.println("Position: " + a1.position);
-	System.out.println("Join date: " + a1.createDate);
-	System.out.println("\n");
-	
-	System.out.println("Thong tin group 1");
-	System.out.println("id: " + g1.id);
-	System.out.println("Name: " + g1.name);
-	System.out.println("Created on: " + g1.createDate);
-	System.out.println("\n");
-	
-	System.out.println("Thong tin question 1");
-	System.out.println("id: " + q1.id);
-	System.out.println("Content: " + q1.content);
-	System.out.println("Question type: " + q1.isQuestionType);
-	System.out.println("Category: " + q1.category);
-	System.out.println("Created by: " + q1.account);
-	System.out.println("Created on: " + q1.createDate);
-	System.out.println("\n");
-	
-	System.out.println("Thong tin answer 1");
-	System.out.println("id: " + an1.id);
-	System.out.println("Content: " + an1.content);
-	System.out.println("Which question: " + an1.question);
-	System.out.println("Answer is correct: " + an1.isCorrect);
-	System.out.println("\n");
-	
-	System.out.println("Thong tin exam 1");
-	System.out.println("id: " + ex1.id);
-	System.out.println("Content: " + ex1.code);
-	System.out.println("Questions on this exam: " + ex1.questions);// need to change to print array
-	System.out.println("Question type: " + ex1.title);
-	System.out.println("Category: " + ex1.category);
-	System.out.println("Created by: " + ex1.duration);
-	System.out.println("Exam taken by: " + ex1.accounts);// need to change to print array
-	System.out.println("Created on: " + ex1.createDate);
-	System.out.println("\n");
+		// SET GROUP INFO
+		Group g4 = new Group(4, "Group 4", null);
+		Group g5 = new Group(5, "Group 5", null);
+		Group g6 = new Group(6, "Group 6", null);
 
-}}
+		Group[] groups1 = {};
+		Group[] groups2 = { g4 };
+		Group[] groups3 = { g4, g5, g6 };
 
+		// ASK ABOUT THIS Group g4=new Group(4,"Group 4",(2012,12,12));
 
+		// SET POSITION INFO
+		Position p1 = new Position(1, PositionName.DEV);
+		Position p2 = new Position(2, PositionName.TEST);
+		Position p3 = new Position(3, PositionName.PM);
+		Position p4 = new Position(4, PositionName.SCRUM_MASTER);
 
+		// SET ACCOUNT INFO
+		Account a1 = new Account(1, "anguyen@gmail.com", "anguyen", "Nguyen Van A", d1, groups1, p1,
+				LocalDate.of(2021, 12, 12));
+		Account a2 = new Account(2, "Bnguyen@gmail.com", "Bnguyen", "Nguyen Van B", d2, groups2, p2,
+				LocalDate.of(2022, 12, 12));
+		Account a3 = new Account(3, "Cnguyen@gmail.com", "Cnguyen", "Nguyen Van C", d3, groups3, p3,
+				LocalDate.of(2021, 1, 1));
+		Account a4 = new Account(4, "Dnguyen@gmail.com", "Dnguyen", "Nguyen Van D", d1, groups3, p3,
+				LocalDate.of(2021, 1, 1));
+		Account a5 = new Account(5, "Enguyen@gmail.com", "Enguyen", "Nguyen Van E", d3, groups3, p3,
+				LocalDate.of(2021, 1, 1));
+		;
+//		System.out.println(a1.toString());
+//		System.out.println(d1.toString());
+
+		// SET GROUP INFO
+		Account[] g1Accounts = { a1, a2 };
+		Account[] g2Accounts = { a2, a3 };
+		Account[] g3Accounts = { a1, a2, a3 };
+		Account[] allAccounts = { a1, a2, a3, a4, a5 };
+
+		Group g1 = new Group(1, "Group 1", g1Accounts, LocalDate.of(2015, 10, 10));
+		Group g2 = new Group(2, "Group 2", g2Accounts, LocalDate.of(2020, 10, 6));
+		Group g3 = new Group(3, "Group 3", g3Accounts, LocalDate.of(2022, 10, 10));
+		Group g7 = new Group(7, "Group 7", allAccounts, LocalDate.of(2022, 10, 10));
+		Group[] allGroups = { g1, g2, g3, g4, g5, g6 };
+
+		Question q1 = new Question(1, "Java question", TypeName.ESSAY, "Java", a1, LocalDate.of(2022, 11, 2));
+		Question q2 = new Question(2, "Ruby question", TypeName.MULTIPLE_CHOICE, "Ruby", a2, LocalDate.of(2021, 10, 2));
+		Question q3 = new Question(3, "C# question", TypeName.ESSAY, "C#", a3, LocalDate.of(2022, 11, 2));
+
+		Question[] ex1Questions = { q1, q2 };
+		Question[] ex2Questions = { q2, q3 };
+
+		Exam ex1 = new Exam(1, "EX001", "Java Core", "Elementary", ex1Questions, 120, g3Accounts,
+				LocalDateTime.of(2022, 11, 2, 11, 30));
+		Exam ex2 = new Exam(2, "EX002", "Ruby Core", "Elementary", ex2Questions, 120, g3Accounts,
+				LocalDateTime.of(2022, 10, 21, 12, 30));
+
+		// CALL METHODS FROM EXERCISE 1
+		Exercise_1 exercise_1 = new Exercise_1();
+		Exercise_2 exercise_2 = new Exercise_2();
+		Exercise_3 exercise_3 = new Exercise_3();
+		Exercise_4 exercise_4 = new Exercise_4();
+		Exercise_5 exercise_5 = new Exercise_5();
+		Exercise_6 exercise_6 = new Exercise_6();
+
+		Department[] departments = { d1, d2, d3 };
+
+//		exercise_1.question1(a1);
+//		exercise_1.question2(a3);
+//		exercise_1.question3(a2);
+//		exercise_1.question4(a2);
+//		exercise_1.question5(g7);
+//		exercise_1.question6(a3);
+//		exercise_1.question7(a3);
+//		System.out.println(a1.toString());
+//		exercise_1.question8(g1Accounts);
+//		exercise_1.question11(departments);
+//		exercise_1.question12(departments);
+//		exercise_1.question13(g3Accounts);
+//		exercise_1.question14(g4Accounts);
+//		exercise_1.question15(20);
+//		exercise_6.question1();
+		// exercise_6.question3();
+
+		// exercise_2.question1();
+		// exercise_2.question2();
+		// exercise_2.question3();
+		// exercise_2.question4();
+		// exercise_2.question5();
+		// exercise_2.question6(g3Accounts);
+
+		// exercise_3.question1(ex1);
+		// exercise_3.question2(ex1);
+		// exercise_3.question3(ex1);
+		// exercise_3.question4(ex1);
+		// exercise_3.question5(ex1);
+//		exercise_5.question8();
+		// exercise_5.question9(allAccounts, allGroups);
+		exercise_6.tinhEx(2, 3);
+
+	}
+}

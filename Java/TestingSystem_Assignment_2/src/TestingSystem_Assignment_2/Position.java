@@ -5,7 +5,14 @@ public class Position {
 	private PositionName	isPosition;
 	
 	
-	//encapsulate ID
+	//constructor for id and isPosition
+	public Position(int id, PositionName isPosition) {
+		super();
+		this.id = id;
+		this.isPosition = isPosition;
+	}
+
+		//encapsulate ID
 		public void setID(int newID) {
 			id=newID;
 		}
