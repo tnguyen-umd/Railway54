@@ -1,5 +1,7 @@
 package TestingSystem_Assignment_2;
 
+import java.util.Scanner;
+
 //Exercise 6 (Optional): Method
 
 //Question 1:
@@ -50,12 +52,6 @@ public class Exercise_6 {
 
 	}
 
-	public static void main(String[] args) {
-		Exercise_6 exercise_6 = new Exercise_6();
-
-		System.out.println(exercise_6.tinhEx(2, 3));
-	}
-
 	public float tinhEx(int n, int x) {
 		// Giai thua n
 		//
@@ -71,7 +67,7 @@ public class Exercise_6 {
 
 	}
 
-	// get maximum number
+	// GET MAX NUMBER
 //	public static int getMax(int x) {
 //
 //		// get max number in an array
@@ -87,58 +83,67 @@ public class Exercise_6 {
 //
 //	}
 
-	public static void nextQuestion() {
-		// Scanner scanner = new Scanner(System.in);
+	public static void orderByAccending() {
+		Scanner scanner = new Scanner(System.in);
 
-		// int a = giaiThua(4);
+//		int a = giaiThua(4);
 
-//		System.out.println("Nhap vao so phan tu cua mang ");
-//		int n = scanner.nextInt();
-//		// int b = scanner.nextInt();
-//
-//		int a[] = new int[n];
-//// nhap vao
-//		for (int i = 0; i < a.length; i++) {
-//			System.out.print("Nhập vao a[" + i + "] = ");
-//			a[i] = scanner.nextInt();
-//		}
-//
+		System.out.println("Nhap vao so phan tu cua mang ");
+		int n = scanner.nextInt();
 
-//
-////		System.out.println("Gias tri lon naht la: " + maxx);
-////		System.out.println("trc khi doi cho " + a[0] + "    " + a[1]);
-//		// a[0]=1 a[1]=4
-////		int tg = 0;
-////		tg = a[0];// 1
-////		a[0] = a[1];// a0= 4
-////		a[1] = tg; // a1 =1
-//
-//		System.out.println("trc khi sap xep");
-//
-//		for (int i = 0; i < a.length; i++) {
-//			System.out.print(a[i] + "  ");
-//
-//		}
-//
-//		// System.out.println("sau khi doi cho " + a[0] + " " + a[1]);
-//		for (int i = 0; i < a.length - 1; i++) {
-//			for (int j = i + 1; j < a.length; j++) {
-//				if (a[i] > a[j]) {
-//					int tg = 0;
-//					tg = a[i];// 1
-//					a[i] = a[j];// a0= 4
-//					a[j] = tg; // a1 =1
-//				}
-//			}
-//		}
-//
-//		System.out.println("trc khi sap xep");
-//
-//		for (int i = 0; i < a.length; i++) {
-//			System.out.print(a[i] + "  ");
-//
-//		}
+		int a[] = new int[n];
 
+		// nhap vao
+		for (int i = 0; i < a.length; i++) {
+			System.out.print("Nhập vao a[" + i + "] = ");
+			a[i] = scanner.nextInt();
+		}
+
+		System.out.println("trc khi sap xep");
+
+		for (int i = 0; i < a.length; i++) {
+			System.out.print(a[i] + "  ");
+
+		}
+		System.out.println();
+
+		// System.out.println("sau khi doi cho " + a[0] + " " + a[1]);
+		for (int i = 0; i < a.length - 1; i++) {
+			for (int j = i + 1; j < a.length; j++) {
+				if (a[i] > a[j]) {
+					int tg = 0;
+					tg = a[i];// 1
+					a[i] = a[j];// a0= 4
+					a[j] = tg;
+
+				}
+			}
+		}
+
+		System.out.println("sau khi sap xep");
+
+		for (int i = 0; i < a.length; i++) {
+			System.out.print(a[i] + "  ");
+
+		}
+
+		//
+////	System.out.println("Gias tri lon naht la: " + maxx);
+////	System.out.println("trc khi doi cho " + a[0] + "    " + a[1]);
+//	// a[0]=1 a[1]=4
+////	int tg = 0;
+////	tg = a[0];// 1
+////	a[0] = a[1];// a0= 4
+////	a[1] = tg; // a1 =1
+//
+	}
+
+	public static void main(String[] args) {
+//		Exercise_6 exercise_6 = new Exercise_6();
+//
+//		System.out.println(exercise_6.tinhEx(2, 3));
+
+		orderByAccending();
 	}
 
 }

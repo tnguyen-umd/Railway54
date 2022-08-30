@@ -1,6 +1,6 @@
-package abc;
+package Lecture;
 
-public class account {
+public class Account {
 	private String name;
 	private int age;
 
@@ -32,7 +32,7 @@ public class account {
 		this.age = age;
 	}
 
-	public account(String name, int age) {
+	public Account(String name, int age) {
 		super();
 		this.name = name;
 		this.age = age;
