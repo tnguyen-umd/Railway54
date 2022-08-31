@@ -2,6 +2,8 @@ package TestingSystem_Assignment_2;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Program {
 	public static void main(String[] args) {
@@ -16,9 +18,15 @@ public class Program {
 		Group g5 = new Group(5, "Group 5", null);
 		Group g6 = new Group(6, "Group 6", null);
 
-		Group[] groups1 = {};
-		Group[] groups2 = { g4 };
-		Group[] groups3 = { g4, g5, g6 };
+		List<Group> groups1 = new ArrayList<>();
+		List<Group> groups2 = new ArrayList<>();
+		groups2.add(g4);
+		groups2.add(g5);
+
+		List<Group> groups3 = new ArrayList<>();
+		groups3.add(g4);
+		groups3.add(g5);
+		groups3.add(g6);
 
 		// ASK ABOUT THIS Group g4=new Group(4,"Group 4",(2012,12,12));
 
@@ -29,31 +37,49 @@ public class Program {
 		Position p4 = new Position(4, PositionName.SCRUM_MASTER);
 
 		// SET ACCOUNT INFO
-		Account a1 = new Account(1, "anguyen@gmail.com", "anguyen", "Nguyen Van A", d1, groups1, p1,
-				LocalDate.of(2021, 12, 12));
-		Account a2 = new Account(2, "Bnguyen@gmail.com", "Bnguyen", "Nguyen Van B", d2, groups2, p2,
-				LocalDate.of(2022, 12, 12));
-		Account a3 = new Account(3, "Cnguyen@gmail.com", "Cnguyen", "Nguyen Van C", d3, groups3, p3,
-				LocalDate.of(2021, 1, 1));
-		Account a4 = new Account(4, "Dnguyen@gmail.com", "Dnguyen", "Nguyen Van D", d1, groups3, p3,
-				LocalDate.of(2021, 1, 1));
-		Account a5 = new Account(5, "Enguyen@gmail.com", "Enguyen", "Nguyen Van E", d3, groups3, p3,
-				LocalDate.of(2021, 1, 1));
-		;
+		Account a1 = new Account(1, " 1@gmail.com", "usser1", "name1", d3, groups1, p4, LocalDate.of(2022, 12, 12));
+		Account a2 = new Account(2, " 1@gmail.com", "usser2", "name1", d3, groups1, p4, LocalDate.of(2022, 12, 12));
+		Account a3 = new Account(3, " 1@gmail.com", "usser3", "name1", d3, groups1, p4, LocalDate.of(2022, 12, 12));
+		Account a4 = new Account(4, " 1@gmail.com", "usser4", "name1", d3, groups1, p4, LocalDate.of(2022, 12, 12));
+		Account a5 = new Account(5, " 1@gmail.com", "usser5", "name1", d3, groups1, p4, LocalDate.of(2022, 12, 12));
+
 //		System.out.println(a1.toString());
 //		System.out.println(d1.toString());
 
 		// SET GROUP INFO
-		Account[] g1Accounts = { a1, a2 };
-		Account[] g2Accounts = { a2, a3 };
-		Account[] g3Accounts = { a1, a2, a3 };
-		Account[] allAccounts = { a1, a2, a3, a4, a5 };
+		List<Account> g1Accounts = new ArrayList<>();
+		g1Accounts.add(a1);
+		g1Accounts.add(a2);
 
-		Group g1 = new Group(1, "Group 1", g1Accounts, LocalDate.of(2015, 10, 10));
-		Group g2 = new Group(2, "Group 2", g2Accounts, LocalDate.of(2020, 10, 6));
-		Group g3 = new Group(3, "Group 3", g3Accounts, LocalDate.of(2022, 10, 10));
-		Group g7 = new Group(7, "Group 7", allAccounts, LocalDate.of(2022, 10, 10));
-		Group[] allGroups = { g1, g2, g3, g4, g5, g6 };
+		List<Account> g2Accounts = new ArrayList<>();
+		g2Accounts.add(a2);
+		g2Accounts.add(a3);
+
+		List<Account> g3Accounts = new ArrayList<>();
+		g3Accounts.add(a1);
+		g3Accounts.add(a2);
+		g3Accounts.add(a3);
+
+		List<Account> allAccounts = new ArrayList<>();
+		allAccounts.add(a1);
+		allAccounts.add(a2);
+		allAccounts.add(a3);
+		allAccounts.add(a4);
+		allAccounts.add(a5);
+
+		Group g1 = new Group(1, "Group 1", LocalDate.of(2020, 10, 6), g1Accounts);
+		Group g2 = new Group(2, "Group 2", LocalDate.of(2020, 10, 6), g2Accounts);
+		Group g3 = new Group(3, "Group 3", LocalDate.of(2020, 10, 6), g3Accounts);
+		Group g7 = new Group(7, "Group 7", LocalDate.of(2020, 10, 6), allAccounts);
+
+		List<Group> groups = new ArrayList<>();
+		groups.add(g1);
+		groups.add(g2);
+		groups.add(g3);
+		groups.add(g4);
+		groups.add(g5);
+		groups.add(g6);
+		groups.add(g7);
 
 		Question q1 = new Question(1, "Java question", TypeName.ESSAY, "Java", a1, LocalDate.of(2022, 11, 2));
 		Question q2 = new Question(2, "Ruby question", TypeName.MULTIPLE_CHOICE, "Ruby", a2, LocalDate.of(2021, 10, 2));
@@ -106,9 +132,9 @@ public class Program {
 		// exercise_3.question3(ex1);
 		// exercise_3.question4(ex1);
 		// exercise_3.question5(ex1);
-//		exercise_5.question8();
+		exercise_5.question8();
 		// exercise_5.question9(allAccounts, allGroups);
-		exercise_6.tinhEx(2, 3);
+		// exercise_6.tinhEx(2, 3);
 
 	}
 }

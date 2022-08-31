@@ -1,7 +1,7 @@
 package TestingSystem_Assignment_2;
 
 import java.time.LocalDate;
-import java.util.Arrays;
+import java.util.List;
 
 public class Account {
 	private int id;
@@ -9,14 +9,15 @@ public class Account {
 	private String userName;
 	private String fullName;
 	private Department department;
-	private Group[] groups;
+	private List<Group> groups;// gr1
 	private Position position;
 	private LocalDate createDate;
 
-	public Account(int id, String email, String userName, String fullName, Department department, Group[] groups,
+	public Account(int id, String email, String userName, String fullName, Department department, List<Group> groups,
 			Position position, LocalDate createDate) {
+		super();
 		this.id = id;
-		this.Email = email;
+		Email = email;
 		this.userName = userName;
 		this.fullName = fullName;
 		this.department = department;
@@ -25,18 +26,33 @@ public class Account {
 		this.createDate = createDate;
 	}
 
-	// encapsulate groups
-	public void setGroups(Group[] newGroups) {
-		groups = newGroups;
-	}
-
-	public Group[] getGroups() {
-		return groups;
-	}
-
 	// encapsulate fullName
 	public void setName(String newName) {
 		fullName = newName;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+	public List<Group> getGroups() {
+		return groups;
+	}
+
+	public void setGroups(List<Group> groups) {
+		this.groups = groups;
 	}
 
 	public String getName() {
@@ -100,8 +116,8 @@ public class Account {
 	@Override
 	public String toString() {
 		return "Account [id=" + id + ", Email=" + Email + ", userName=" + userName + ", fullName=" + fullName
-				+ ", department=" + department.getName() + ", groups=" + Arrays.toString(groups) + ", position="
-				+ position + ", createDate=" + createDate + "]";
+				+ ", department=" + department + ", groups=" + groups + ", position=" + position + ", createDate="
+				+ createDate + "]";
 	}
 
 }

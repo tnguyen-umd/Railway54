@@ -38,6 +38,13 @@ public class Account {
 		this.age = age;
 	}
 
+	@Override
+	public String toString() {
+		return "Account [name=" + name + ", age=" + age + "]";
+	}
+
+	
+	
 }
 
 //tạo 1 đối tương acc có name  và age. tạo 1 mảng có chưa 5 acc. sắp xếp các acc theo  tuổi giảm dần

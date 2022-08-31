@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 /*
@@ -297,38 +298,67 @@ public class Exercise_5 {
 //	Bước 4: Yêu cầu người dùng nhập vào tên của group
 
 //	Bước 5: Dựa vào username và tên của group người dùng vừa chọn, hãy thêm account vào group đó
+	// groups cua acc chua co j
 
-	public void question9(Account[] a, Group[] b) {
+	public void question9(List<Account> a, List<Group> b) {
 
 		Scanner scanner = new Scanner(System.in);
-		for (int i = 0; i < a.length; i++) {
-			System.out.println("Usernames: " + a[i].getUserName());
+		// in ra usernames cua cac' user trong allAccounts
+		for (int i = 0; i < a.size(); i++) {
+			System.out.println("List of usernames:" + a.get(i).getUserName());
 		}
 
-		for (int i = 0; i < b.length; i++) {
-			System.out.println("Group names: " + b[i].getName());
-		}
-
+		// input your username
 		System.out.println("Please input username");
 		String userName = scanner.next();
+
+		for (int j = 0; j < b.size(); j++) {
+			System.out.println("Group names: " + b.get(j).getName());
+		}
 
 		System.out.println("Please input group name");
 		String groupName = scanner.next();
 
-//		if (userName.equals(a[i].getUserName())) {
-//			1)check xem account co ton tai khong
-//			2) check xem account+group co ton tai khong
-//			3) neu khong ton tai thi` in ra la mot trong 2 khong ton tai
-//			4) tao ra newAccount roi cho vao group day
-//		}	
+//		for (int i = 0; i < b.length; i++) {
+//			if (groupName.equals(b[i].getName())) {
+////				1)check xem account co ton tai khong
+////				2) check xem account+group co ton tai khong
+////				3) neu khong ton tai thi` in ra la mot trong 2 khong ton tai
+////				4) tao ra newAccount roi cho vao group day
+////			}	
+//
+//			}
+////		
+//
+//			// Account[] g6Accounts= {a1,a2,a3,a4};
+//
+//			// 1:
+//
+//			scanner.close();
+//		}
 
-		Account account = new Account(1, null, userName, null, null, null, null, LocalDate.now());
+		// tim ra group co' groupName trung voi' group nhap vao
+		int index = 0;
+		for (int i = 0; i < b.size(); i++) {
+			if (b.get(i).getName().equals(groupName)) {
+				index = i;
+				break;
+			}
+		}
 
-		// Account[] g6Accounts= {a1,a2,a3,a4};
+		// them group vao` account day
+		for (int i = 0; i < a.size(); i++) {
 
-		// 1:
+			// if inUsername nhap vao` co' trong List<Account>(allAccount)
+			// cho them gr vao` trong inUsername
+			if (a.get(i).getUserName().equals(userName)) {
+				a.get(i).getGroups().add(b.get(index));
+				b.get(index).getAccounts().add(a.get(i));
+				break;
+			}
+		}
 
-		scanner.close();
+		// cho inUsername them vao trong gr
+
 	}
-
 }
