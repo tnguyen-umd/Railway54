@@ -1,10 +1,10 @@
-package Extra_Assignment_3;
+package com.vti.frontend;
 
 import java.util.Random;
 import java.util.Scanner;
 
 //program danh lo de
-public class Program_X3 {
+public class ExtraAssignment_3_Program {
 
 	static Scanner sc = new Scanner(System.in);
 	static Random rand = new Random();

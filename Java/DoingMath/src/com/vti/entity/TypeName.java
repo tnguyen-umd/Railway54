@@ -1,4 +1,4 @@
-package TestingSystem_Assignment_2;
+package com.vti.entity;
 
 public enum TypeName {
 	ESSAY,MULTIPLE_CHOICE;

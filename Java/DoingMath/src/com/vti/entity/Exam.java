@@ -1,4 +1,4 @@
-package TestingSystem_Assignment_2;
+package com.vti.entity;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;

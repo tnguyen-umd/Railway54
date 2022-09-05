@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+import com.vti.entity.Account;
+
 /*Exercise 2 (Optional): System out printf*/
 
 public class Exercise_2 {

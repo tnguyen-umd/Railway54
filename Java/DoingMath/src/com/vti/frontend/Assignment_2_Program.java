@@ -1,11 +1,27 @@
-package TestingSystem_Assignment_2;
+package com.vti.frontend;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Program {
+import com.vti.entity.Account;
+import com.vti.entity.Department;
+import com.vti.entity.Exam;
+import com.vti.entity.Group;
+import com.vti.entity.Position;
+import com.vti.entity.PositionName;
+import com.vti.entity.Question;
+import com.vti.entity.TypeName;
+
+import TestingSystem_Assignment_2.Exercise_1;
+import TestingSystem_Assignment_2.Exercise_2;
+import TestingSystem_Assignment_2.Exercise_3;
+import TestingSystem_Assignment_2.Exercise_4;
+import TestingSystem_Assignment_2.Exercise_5;
+import TestingSystem_Assignment_2.Exercise_6;
+
+public class Assignment_2_Program {
 	public static void main(String[] args) {
 
 		// SET DEPARTMENT INFO
@@ -94,12 +110,12 @@ public class Program {
 				LocalDateTime.of(2022, 10, 21, 12, 30));
 
 		// CALL METHODS FROM EXERCISE 1
-		Exercise_1 exercise_1 = new Exercise_1();
-		Exercise_2 exercise_2 = new Exercise_2();
-		Exercise_3 exercise_3 = new Exercise_3();
-		Exercise_4 exercise_4 = new Exercise_4();
-		Exercise_5 exercise_5 = new Exercise_5();
-		Exercise_6 exercise_6 = new Exercise_6();
+		TestingSystem_Assignment_2.Exercise_1 exercise_1 = new Exercise_1();
+		TestingSystem_Assignment_2.Exercise_2 exercise_2 = new Exercise_2();
+		TestingSystem_Assignment_2.Exercise_3 exercise_3 = new Exercise_3();
+		TestingSystem_Assignment_2.Exercise_4 exercise_4 = new Exercise_4();
+		TestingSystem_Assignment_2.Exercise_5 exercise_5 = new Exercise_5();
+		TestingSystem_Assignment_2.Exercise_6 exercise_6 = new Exercise_6();
 
 		Department[] departments = { d1, d2, d3 };
 

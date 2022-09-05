@@ -7,6 +7,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+import com.vti.entity.Account;
+import com.vti.entity.Department;
+import com.vti.entity.Group;
+import com.vti.entity.Position;
+import com.vti.entity.PositionName;
+
 /*
 Exercise 5: Input from console
 

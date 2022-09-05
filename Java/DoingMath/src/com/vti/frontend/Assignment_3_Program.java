@@ -1,4 +1,4 @@
-package TestingSystem_Assignment_3;
+package com.vti.frontend;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -9,7 +9,7 @@ import AccountManagement.Account;
 
 public class Assignment_3_Program {
 	static List<Account> accounts = new ArrayList<>();
-	static List<Department> departments = new ArrayList<>();
+	static List<TestingSystem_Assignment_3.Department> departments = new ArrayList<>();
 
 	public static void accountInfo() {
 		System.out.println("Thong tin Account: ");
@@ -254,12 +254,18 @@ public class Assignment_3_Program {
 	public static void exercise5() {
 		// Exercise 5: Object’s Method
 
-		Department d1 = new Department(1, "Accounting", "45 Hoang Hoa Tham");
-		Department d2 = new Department(2, "Boss of director", "21 Doi Can");
-		Department d3 = new Department(3, "Marketing", "123 Vu Ngoc Phan");
-		Department d4 = new Department(4, "Sale", "50 Truong Chinh");
-		Department d5 = new Department(5, "Accounting", "132 Phan Boi Chau");
-		Department d6 = new Department(6, "Waiting room", "132 Phan Boi Chau");
+		TestingSystem_Assignment_3.Department d1 = new TestingSystem_Assignment_3.Department(1, "Accounting",
+				"45 Hoang Hoa Tham");
+		TestingSystem_Assignment_3.Department d2 = new TestingSystem_Assignment_3.Department(2, "Boss of director",
+				"21 Doi Can");
+		TestingSystem_Assignment_3.Department d3 = new TestingSystem_Assignment_3.Department(3, "Marketing",
+				"123 Vu Ngoc Phan");
+		TestingSystem_Assignment_3.Department d4 = new TestingSystem_Assignment_3.Department(4, "Sale",
+				"50 Truong Chinh");
+		TestingSystem_Assignment_3.Department d5 = new TestingSystem_Assignment_3.Department(5, "Accounting",
+				"132 Phan Boi Chau");
+		TestingSystem_Assignment_3.Department d6 = new TestingSystem_Assignment_3.Department(6, "Waiting room",
+				"132 Phan Boi Chau");
 
 		departments.add(d1);
 		departments.add(d2);
@@ -276,7 +282,7 @@ public class Assignment_3_Program {
 		// Question 2:
 		// I n ra thông tin của tất cả phòng ban (sử dụng toString())
 		System.out.println("Question 2: Thong tin tat ca cac phong ban: ");
-		for (Department dep : departments) {
+		for (TestingSystem_Assignment_3.Department dep : departments) {
 			System.out.println(dep.toString());
 		}
 		System.out.println();
@@ -308,8 +314,8 @@ public class Assignment_3_Program {
 //		sách phòng ban theo thứ tự tăng dần theo tên (sắp xếp theo vần ABCD)
 //		VD: //	Accounting//	Boss of director//	Marketing//	Sale//	Waiting room
 		System.out.println("Question 6: Sorting department names by alphabetical order");
-		departments.sort(Comparator.comparing(Department::getName));
-		for (Department dep : departments) {
+		departments.sort(Comparator.comparing(TestingSystem_Assignment_3.Department::getName));
+		for (TestingSystem_Assignment_3.Department dep : departments) {
 			System.out.println(dep);
 		}
 

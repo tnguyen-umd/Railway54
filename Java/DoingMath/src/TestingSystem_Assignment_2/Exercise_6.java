@@ -2,6 +2,8 @@ package TestingSystem_Assignment_2;
 
 import java.util.Scanner;
 
+import com.vti.entity.Account;
+
 //Exercise 6 (Optional): Method
 
 //Question 1:
