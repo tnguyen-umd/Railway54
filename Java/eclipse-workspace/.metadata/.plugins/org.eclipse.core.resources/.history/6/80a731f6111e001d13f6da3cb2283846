@@ -1,7 +1,0 @@
-
-public class TypeQuestion {
-	int		id;
-	TypeName	isType;
-	int		categoryID;
-	String	categoryName;
-}

@@ -1,7 +1,8 @@
 package QLCB;
 
-public class employee extends Users {
+public class employee extends User {
 	private String congViec;
+	private double salary;
 
 	public String getCongViec() {
 		return congViec;
@@ -11,9 +12,28 @@ public class employee extends Users {
 		this.congViec = congViec;
 	}
 
-	public employee(String name, byte age, String address, String congViec) {
-		super(name, age, address);
+	public employee(String name, byte age, double salaryRatio, String address, String congViec) {
+		super(name, age, salaryRatio, address);
 		this.congViec = congViec;
+	}
+
+	@Override
+	public void calculatePay() {
+		salary = salaryRatio * 420;
+	}
+
+	@Override
+	public void displayInfor() {
+		// TODO Auto-generated method stub
+
+	}
+
+	public double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(double salary) {
+		this.salary = salary;
 	}
 
 }

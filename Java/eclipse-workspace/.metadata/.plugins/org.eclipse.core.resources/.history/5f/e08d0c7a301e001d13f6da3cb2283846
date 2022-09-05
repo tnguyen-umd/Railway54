@@ -1,9 +1,0 @@
-package TestingSystem;
-import java.util.Date;
-
-public class Group {
-	int		id;
-	String	groupName;
-	Account	creatorID;
-	Date	createDate;
-}

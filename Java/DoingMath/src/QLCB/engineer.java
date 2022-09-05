@@ -1,6 +1,6 @@
 package QLCB;
 
-public class engineer extends Users {
+public class engineer extends User {
 	private String nganhDaoTao;
 
 	public String getNganhDaoTao() {

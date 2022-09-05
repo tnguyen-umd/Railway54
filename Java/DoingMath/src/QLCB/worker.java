@@ -1,6 +1,6 @@
 package QLCB;
 
-public class worker extends Users {
+public class worker extends User {
 	private byte level;// levels from 1 to 10
 
 	public byte getLevel() {

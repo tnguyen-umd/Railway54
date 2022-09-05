@@ -1,0 +1,11 @@
+package TestingSystem_Assignment_2;
+
+import TestingSystem_Assignment_2.Question;
+
+public class Answer {
+	int			id;
+	String		content;
+	Question	question;
+	boolean		isCorrect;
+
+}

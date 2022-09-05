@@ -55,21 +55,18 @@ public class Student {
 		this.grade = grade;
 	}
 
-	public void addGrade() {
-		// grade=setGrade(grade);
-	}
-
 	public void printGrade() {
 		if (grade <= 4.0) {
-			System.out.println("Hoc sinh " + name + " Grade = yeu");
+			System.out.println("Hoc sinh " + name + ", Grade = yeu");
 		}
 		if (grade > 4.0 && grade <= 6.0) {
-			System.out.println("Hoc sinh " + name + " Grade = trung binh");
+			System.out.println("Hoc sinh " + name + ", Grade = trung binh");
 		}
 		if (grade > 6.0 && grade <= 8.0) {
-			System.out.println("Hoc sinh " + name + " Grade = kha");
-		} else {
-			System.out.println("Hoc sinh " + name + " Grade = gioi");
+			System.out.println("Hoc sinh " + name + ", Grade = kha");
+		}
+		if (grade > 8.0) {
+			System.out.println("Hoc sinh " + name + ", Grade = gioi");
 		}
 
 	}

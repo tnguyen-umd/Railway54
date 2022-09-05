@@ -1,6 +1,0 @@
-
-public class Exam {
-	int		id;
-	Question	question;
-
-}

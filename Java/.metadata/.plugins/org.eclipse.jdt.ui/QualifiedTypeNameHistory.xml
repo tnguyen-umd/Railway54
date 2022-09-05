@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.lang.reflect.Array"/>
+    <fullyQualifiedTypeName name="abc.Account"/>
+    <fullyQualifiedTypeName name="TestingSystem_Assignment_2.Group"/>
+    <fullyQualifiedTypeName name="TestingSystem_Assignment_2.Account"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="TestingSystem_Assignment_3.Account"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="java.util.Collections"/>
+    <fullyQualifiedTypeName name="java.util.Random"/>
+    <fullyQualifiedTypeName name="javax.sound.midi.Soundbank"/>
+    <fullyQualifiedTypeName name="TestingSystem_Assignment_2.Exercise_1"/>
+    <fullyQualifiedTypeName name="TestingSystem_Assignment_3.Department"/>
+    <fullyQualifiedTypeName name="com.vti.entity.Student"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="com.vti.entity.phone"/>
+</qualifiedTypeNameHistroy>
