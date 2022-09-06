@@ -1,0 +1,14 @@
+package QLCB;
+
+public class employee extends CanBo {
+	private String congViec;
+
+	public String getCongViec() {
+		return congViec;
+	}
+
+	public void setCongViec(String congViec) {
+		this.congViec = congViec;
+	}
+
+}

@@ -1,0 +1,11 @@
+package WhileWaiting;
+
+public abstract class CanBo {
+	private String name;
+	private byte age;
+	private enum sex{FEMALE, MALE,UNKNOWN};
+	private String address;
+	
+	
+
+}

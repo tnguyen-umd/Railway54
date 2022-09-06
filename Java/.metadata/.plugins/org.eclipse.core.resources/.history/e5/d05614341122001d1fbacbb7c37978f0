@@ -1,0 +1,10 @@
+package TestingSystem_Assignment_2;
+import java.time.LocalDate;
+
+public class Group {
+	int		id;
+	String	name;
+	Account[]	participants;
+	LocalDate	createDate;
+}
+

@@ -1,0 +1,6 @@
+package WhileWaiting;
+
+public class CongNhan extends CanBo {
+	private byte level;// levels from 1 to 10
+
+}
