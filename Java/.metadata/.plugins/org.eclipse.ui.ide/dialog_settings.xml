@@ -19,6 +19,9 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\tnguy\OneDrive\Documents\GitHub\Railway54\Java\TestingSystem_Assignment_6\Testing_System_Assignment_4_Debug"/>
+			<item value="C:\Users\tnguy\OneDrive\Documents\GitHub\Railway54\Java\src\DebugExercise"/>
+			<item value="C:\Users\tnguy\OneDrive\Documents\GitHub\Railway54\Java\src"/>
 			<item value="C:\Users\tnguy\OneDrive\Documents\GitHub\Railway54\Java\DoingMath\src\QLCB"/>
 			<item value="C:\Users\tnguy\OneDrive\Documents\GitHub\Railway54\Java\ACCManagement"/>
 			<item value="C:\Users\tnguy\OneDrive\Documents\GitHub\Railway54\Java"/>
