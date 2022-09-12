@@ -6,4 +6,3 @@ INDEX VERSION 1.131+C:\Users\tnguy\OneDrive\Documents\GitHub\Railway54\Java\.met
 1067094681.index
 64235065.index
 342888986.index
-606693932.index

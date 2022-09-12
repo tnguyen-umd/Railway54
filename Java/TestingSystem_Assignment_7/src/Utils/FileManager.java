@@ -42,6 +42,41 @@ import java.nio.file.StandardCopyOption;
 //folder."
 //Gợi ý: Tạo method List<String> getAllFileName(String path)
 
+//Question 7: Copy File
+//Tạo 1 method để copy file.
+//Chú ý: 
+//Nếu file không tồn tại thì sẽ throw ra Exception "Error! Source 
+//File Not Exist."
+//Nếu file đích đã tồn tại thì sẽ throw ra Exception "Error! 
+//newPath has File same name."
+//Gợi ý: 
+//Tạo method void copyFile(String sourceFile, String 
+//distinationPath, String newName)
+//Và tạo method void copyFile(String sourceFile, String 
+//newPath). Với File mới sẽ có tên cùng với file cũ 
+
+//Question 8: Moving file
+//Tạo 1 method để di chuyển file sang folder khác.
+//Chú ý: 
+//Nếu file không tồn tại thì sẽ throw ra Exception "Error! File 
+//Not Exist.".
+//Phải xóa file cũ đi
+//Gợi ý: 
+//Tạo method void moveFile(String sourceFile, String 
+//destinationPath)
+
+//Question 9: Rename File
+//Tạo 1 method để đổi tên file.
+//Chú ý: 
+//Nếu file không tồn tại thì sẽ throw ra Exception "Error! File 
+//Not Exist.".
+//5
+//Nếu newName đã tồn tại thì sẽ throw ra Exception "Error!
+//Name is Exist.".
+//Gợi ý: 
+//Tạo method void renameFile(String pathFile, String 
+//newName)
+
 public class FileManager {
 
 	public static void main(String[] args) throws Exception {
@@ -50,7 +85,27 @@ public class FileManager {
 //		// deleteFile("C:\\Users\\tnguy\\OneDrive\\Documents\\GitHub\\Railway54\\Test.txt");
 //		checkPath("C:\\Users\\tnguy\\OneDrive\\Documents\\GitHub\\Railway54\\Test.txt");
 //		getAllFileNames("C:\\Users\\tnguy\\OneDrive\\Documents\\GitHub\\Railway54\\");
-		copyFile("C:\\Users\\tnguy\\OneDrive\\Documents\\GitHub\\Railway54\\Test.txt");
+
+		// Using copy file: original file name, destination folder, new file name
+//		copyFile("C:\\Users\\tnguy\\OneDrive\\Documents\\GitHub\\Railway54\\Test.txt",
+//				"C:\\Users\\tnguy\\OneDrive\\Documents\\GitHub\\Railway54\\","Test.txt");
+
+		// Using moveFile: original file path name, new path+name
+//		moveFile("C:\\Users\\tnguy\\OneDrive\\Documents\\GitHub\\Railway54\\Test.txt",
+//				"C:\\Users\\tnguy\\OneDrive\\Documents\\GitHub\\Test1.txt");
+
+		// Using moveFile: original file path name, new path+name
+//		renameFile("C:\\Users\\tnguy\\OneDrive\\Documents\\GitHub\\Test1.txt",
+//				"C:\\Users\\tnguy\\OneDrive\\Documents\\GitHub\\Test10.txt");
+
+		// Question 10: Create new folder
+		// Tạo 1 method để có thể tạo được folder.
+		// Chú ý:
+		// Kiểm tra xem folder đã tồn tại hay chưa, nếu folder đã tồn tại
+		// thì sẽ throw ra Exception "Error! Folder Exist."
+		// Gợi ý: Tạo method void createNewFolder(String newPathFolder)
+
+		createFolder("C:\\Users\\tnguy\\OneDrive\\Documents\\GitHub\\NewFolder");
 
 	}
 
@@ -102,11 +157,11 @@ public class FileManager {
 		}
 	}
 
-	public static void copyFile(String fileName) throws Exception {
-		File file = new File(fileName);
+	public static void copyFile(String original, String destination, String copiedName) throws Exception {
+		File file = new File(original);
 		if (file.exists()) {
 
-			Path destinationFile = Paths.get("C:\\Users\\tnguy\\OneDrive\\Documents\\GitHub\\Railway54\\Test1.txt");
+			Path destinationFile = Paths.get(destination, copiedName);
 			Path originalFile = file.toPath();
 			if (originalFile.equals(destinationFile)) {
 				System.out.println("Error, file name exists in folder, overwriting is prohibited");
@@ -127,49 +182,53 @@ public class FileManager {
 //		assertThat(copied).exists();
 //		assertThat(Files.readAllLines(originalPath).equals(Files.readAllLines(copied)));
 	}
+
+	public static void moveFile(String originalFile, String newFile) {
+
+		File file = new File(originalFile);
+
+		// renaming the file and moving it to a new location
+		if (file.renameTo(new File(newFile))) {
+			// if file copied successfully then delete the original file
+			file.delete();
+			System.out.println("File moved successfully");
+		} else {
+			System.out.println("Failed to move the file");
+		}
+	}
+
+	public static void renameFile(String originalFile, String newFile) {
+
+		File file = new File(originalFile);
+
+		// renaming the file and moving it to a new location
+		if (file.renameTo(new File(newFile))) {
+			// if file copied successfully then delete the original file
+			file.delete();
+			System.out.println("File renamed successfully");
+		} else {
+			System.out.println("Failed to rename the file");
+		}
+	}
+
+	public static void createFolder(String newFolder) {
+		try {
+
+			Path path = Paths.get(newFolder);
+
+			// java.nio.file.Files;
+			Files.createDirectories(path);
+
+			System.out.println("Directory is created!");
+
+		} catch (IOException e) {
+
+			System.err.println("Failed to create directory!" + e.getMessage());
+
+		}
+	}
+
 }
-
-//Question 7: Copy File
-//Tạo 1 method để copy file.
-//Chú ý: 
-//Nếu file không tồn tại thì sẽ throw ra Exception "Error! Source 
-//File Not Exist."
-//Nếu file đích đã tồn tại thì sẽ throw ra Exception "Error! 
-//newPath has File same name."
-//Gợi ý: 
-//Tạo method void copyFile(String sourceFile, String 
-//distinationPath, String newName)
-//Và tạo method void copyFile(String sourceFile, String 
-//newPath). Với File mới sẽ có tên cùng với file cũ 
-
-//Question 8: Moving file
-//Tạo 1 method để di chuyển file sang folder khác.
-//Chú ý: 
-//Nếu file không tồn tại thì sẽ throw ra Exception "Error! File 
-//Not Exist.".
-//Phải xóa file cũ đi
-//Gợi ý: 
-//Tạo method void moveFile(String sourceFile, String 
-//destinationPath)
-
-//Question 9: Rename File
-//Tạo 1 method để đổi tên file.
-//Chú ý: 
-//Nếu file không tồn tại thì sẽ throw ra Exception "Error! File 
-//Not Exist.".
-//5
-//Nếu newName đã tồn tại thì sẽ throw ra Exception "Error!
-//Name is Exist.".
-//Gợi ý: 
-//Tạo method void renameFile(String pathFile, String 
-//newName)
-
-//Question 10: Create new folder
-//Tạo 1 method để có thể tạo được folder.
-//Chú ý: 
-//Kiểm tra xem folder đã tồn tại hay chưa, nếu folder đã tồn tại 
-//thì sẽ throw ra Exception "Error! Folder Exist."
-//Gợi ý: Tạo method void createNewFolder(String newPathFolder)
 
 //Question 11: Download File
 //Hãy viết 1 method để có thể download được file ở trên mạng
