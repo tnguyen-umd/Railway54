@@ -1,0 +1,15 @@
+package abc;
+
+public class Project {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Account a1 = new Account("Mr. A	", 20);
+		Account a2 = new Account("Mr. B	", 22);
+		Account a3 = new Account("Mr. C	", 24);
+		Account a4 = new Account("Mr. D	", 31);
+		Account a5 = new Account("Mr. E	", 40);
+
+	}
+
+}

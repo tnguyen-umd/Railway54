@@ -1,0 +1,6 @@
+
+public class account {
+	private String name;
+	private int age;
+
+}

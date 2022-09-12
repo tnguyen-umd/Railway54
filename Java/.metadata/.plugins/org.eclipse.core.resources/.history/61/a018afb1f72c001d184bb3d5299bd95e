@@ -1,0 +1,5 @@
+package WhileWaiting;
+
+public abstract class CanBo {
+
+}
