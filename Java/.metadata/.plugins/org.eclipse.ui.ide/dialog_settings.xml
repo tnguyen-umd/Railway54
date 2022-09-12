@@ -19,6 +19,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\tnguy\OneDrive\Documents\GitHub\Railway54\Java\TestingSystem_Assignment_7"/>
 			<item value="C:\Users\tnguy\OneDrive\Documents\GitHub\Railway54\Java\Lectures\Assignment 7\IO Stream"/>
 			<item value="C:\Users\tnguy\OneDrive\Documents\GitHub\Railway54\Java\Lectures\Assignment 7\FileManager"/>
 			<item value="C:\Users\tnguy\OneDrive\Documents\GitHub\Railway54\Java\TestingSystem_Assignment_6\Testing_System_Assignment_4_Debug"/>

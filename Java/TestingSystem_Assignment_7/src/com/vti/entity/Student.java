@@ -1,5 +1,7 @@
 package com.vti.entity;
 
+import java.io.Serializable;
+
 import com.vti.backend.ScannerUtils;
 
 //Exercise 1: Static
@@ -86,7 +88,7 @@ import com.vti.backend.ScannerUtils;
 //Hãy thiết kế chương trình sao cho không có class nào có thể kế thừa từ 
 //PrimaryStudent, SecondaryStudent 
 
-public class Student {
+public class Student implements Serializable {
 
 	private int id;
 	private String name;

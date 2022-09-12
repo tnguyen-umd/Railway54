@@ -1,5 +1,11 @@
 package com.vti.frontend;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -8,6 +14,8 @@ import com.vti.backend.ScannerUtils;
 import com.vti.entity.PrimaryStudent;
 import com.vti.entity.SecondaryStudent;
 import com.vti.entity.Student;
+
+import Utils.FileManager;
 
 public class Program1 {
 
@@ -24,13 +32,14 @@ public class Program1 {
 			System.out.println("-------------Moi ban lua chon chuong trinh-------------------");
 			System.out.println(
 					"1. Thêm mới sinh vien " + "----2. Add primary student " + "----3. Add secondary student ");
-			System.out.println("4. Dong quy lop " + "----5. Change school name" + "----6. Thoat chuong trinh");
+			System.out.println("4. Dong quy lop " + "----5. Change school name" + "----6. Thoat chuong trinh"
+					+ "----7. Hien thi students");
 
 			int idChucNang = su.inputInt("Wrong input, use integers only");
 
 			switch (idChucNang) {
 			case 1:
-				addStudent();
+				addStudent("C:\\Users\\tnguy\\OneDrive\\Documents\\GitHub\\Railway54\\abc\\", "Student.ser");
 				countStudent();
 				countPrimaryStudent();
 				countSecondaryStudent();
@@ -56,11 +65,36 @@ public class Program1 {
 			case 6:
 				System.out.println("Cám ơn bạn đã sử dụng dịch vụ, xin chào và hẹn gặp lại ");
 				return;
+			case 7:
+				showStudent("C:\\Users\\tnguy\\OneDrive\\Documents\\GitHub\\Railway54\\abc\\", "Student.ser");
+				break;
 			default:
 				System.out.println("Nhap sai, moi nhap lai");
 				break;
 			}
 		}
+	}
+
+	public static void addStudent(String directory, String fileName) {
+		Student student;
+		try {
+			if (FileManager.checkFolder(directory)) {
+				FileOutputStream fileOutputStream = new FileOutputStream(directory + fileName);
+				ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+				student = new Student();
+				students.add(student);
+
+				// write object to file
+				objectOutputStream.writeObject(student);
+
+				// write list of object to file
+				objectOutputStream.writeObject(students);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			FileManager.createFolder(directory);
+		}
+
 	}
 
 	public static void addPrimaryStudent() {
@@ -136,18 +170,23 @@ public class Program1 {
 		return addAmount;
 	}
 
-	public static void addStudent() {
-		Student student;
+	public static void showStudent(String directory, String fileName) throws ClassNotFoundException, IOException {
+		FileInputStream fileInputStream;
 		try {
-			student = new Student();
-			students.add(student);
-		} catch (Exception e) {
+			fileInputStream = new FileInputStream(directory + fileName);
+			ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+			Object object = objectInputStream.readObject();
+			objectInputStream.close();
+
+			Student student = (Student) object;
+			System.out.println(student.toString());
+
+		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 
 	}
-
 }
 
 //Exercise 3 (Optional): File
