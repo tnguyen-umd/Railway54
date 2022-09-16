@@ -1,4 +1,4 @@
-package question1;
+package Debug;
 
 public class Question1 {
 	public static void main(String[] args) {

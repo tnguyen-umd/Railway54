@@ -1,6 +1,6 @@
 package com.vti.entity;
 
-public class Student {
+public class Student implements Comparable<Student> {
 
 	// this is how to do auto increment
 	private static int count = 1;
@@ -34,6 +34,11 @@ public class Student {
 	@Override
 	public String toString() {
 		return "Student [id=" + id + ", name=" + name + "]";
+	}
+
+	@Override
+	public int compareTo(Student student) {
+		return this.name.compareTo(student.getName());
 	}
 
 }
