@@ -129,3 +129,8 @@ VALUE					('Tuyển fresher1 ',	'2007-04-28 08:00:00',	'2007-02-28 10:00:00',		1
     
 INSERT INTO `Testing_Exam`  	(`exam_id`,			`testing_id`   )
 VALUE							(1,					1);
+
+INSERT INTO `testingsystem`.`departments` (`department_name`) VALUES ('sale');
+INSERT INTO `testingsystem`.`departments` (`department_name`) VALUES ('marketing');
+INSERT INTO `testingsystem`.`departments` (`department_name`) VALUES ('security');
+INSERT INTO `testingsystem`.`departments` (`department_name`) VALUES ('management');

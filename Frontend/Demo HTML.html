@@ -1,0 +1,123 @@
+<h1>Welcome to Tuong Nguyen's website
+</h1>
+
+<p>Taking web developer course Summer-Falls 2022
+   
+    <img src="VTI_logo.jpg" alt="VTI Logo"style="width:100px;height:100px;">
+</p>
+
+
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    </style>
+    </head>
+    <body>
+    
+    <h2>Visits</h2>
+    
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Country visited</th>
+        <th>Time frame</th>
+      </tr>
+      <tr>
+        <td>Nguyen's Family</td>
+        <td>South Africa</td>
+        <td>Winter 2022</td>
+      </tr>
+      <tr>
+        <td>Nguyen's Family</td>
+        <td>Morocco</td>
+        <td>Summer 2021</td>
+      </tr>
+      <tr>
+        <td>Ha Vu</td>
+        <td>Mauritania</td>
+        <td>Spring 2022</td>
+      </tr>
+      <tr>
+        <td>Ha Vu</td>
+        <td>Boukinafaso</td>
+        <td>Spring 2023</td>
+      </tr>
+      <tr>
+        <td>Nguyen's Family</td>
+        <td>Egypt</td>
+        <td>Winter 2021</td>
+      </tr>
+      <tr>
+        <td>Nguyen's Family</td>
+        <td>Vietnam</td>
+        <td>Summer 2022</td>
+      </tr>
+    </table>
+    
+    </body>
+    </html>
+
+<p>
+
+</p>
+
+<div style="text-align:center"> 
+  <button onclick="playPause()">Play/Pause</button> 
+  <button onclick="makeBig()">Big</button>
+  <button onclick="makeSmall()">Small</button>
+  <button onclick="makeNormal()">Normal</button>
+  <br><br>
+  <video id="video1" width="420">
+    <source src="Venice.mp4" type="video/mp4">
+    Your browser does not support HTML video.
+  </video>
+</div> 
+
+<script> 
+var myVideo = document.getElementById("video1"); 
+
+function playPause() { 
+  if (myVideo.paused) 
+    myVideo.play(); 
+  else 
+    myVideo.pause(); 
+} 
+
+function makeBig() { 
+    myVideo.width = 560; 
+} 
+
+function makeSmall() { 
+    myVideo.width = 320; 
+} 
+
+function makeNormal() { 
+    myVideo.width = 420; 
+} 
+</script> 
+
+
+<p style="text-align:center;">
+    <b>Coffee time in Venice - Spring 2017</b>
+    </p>
+
+
+</body> 
+</html>

@@ -14,15 +14,22 @@ CREATE TABLE IF NOT EXISTS `User` (
 	id 				SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	`username`	 	CHAR(50) NOT NULL UNIQUE CHECK (LENGTH(`username`) >= 6 AND LENGTH(`username`) <= 50),
 	`email` 		CHAR(50) NOT NULL UNIQUE CHECK (LENGTH(`email`) >= 6 AND LENGTH(`email`) <= 50),
-	`password` 		VARCHAR(800) NOT NULL,
-	`firstName` 	NVARCHAR(50) NOT NULL,
-	`lastName` 		NVARCHAR(50) NOT NULL,
-	`gender` 		ENUM('M','F','U') NOT NULL,
-	`date_Of_Birth` DATE NOT NULL,
-	`address` 		CHAR(100) NOT NULL,
-	`phone` 		CHAR(15) NOT NULL UNIQUE CHECK (LENGTH(`phone`) >= 9 AND LENGTH(`phone`) <= 15),
+	`password` 		VARCHAR(800),
+	`firstName` 	NVARCHAR(50),
+	`lastName` 		NVARCHAR(50),
+	`gender` 		ENUM('M','F','U') DEFAULT 'F',
+	`date_Of_Birth` DATE,
+	`address` 		CHAR(100),
+	`phone` 		CHAR(15) CHECK (LENGTH(`phone`) >= 9 AND LENGTH(`phone`) <= 15),
 	`role` 			ENUM('Admin','Employee','Manager') NOT NULL DEFAULT 'Employee',
 	`status`		TINYINT DEFAULT 0 -- 0: Not Active, 1: Active, 2: block
+);
+
+-- Create table Position
+DROP TABLE IF EXISTS 	`Position`;
+CREATE TABLE IF NOT EXISTS `Position` ( 	
+	id 				SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	`name`	 		CHAR(50) NOT NULL UNIQUE
 );
 
 -- Create table Registration_User_Token
@@ -59,9 +66,16 @@ CREATE TABLE IF NOT EXISTS `User_Group` (
     group_id 		SMALLINT UNSIGNED NOT NULL,
     user_id 		SMALLINT UNSIGNED NOT NULL,
     join_time		DATETIME NOT NULL DEFAULT NOW(),
-	FOREIGN KEY (group_id) 		REFERENCES `Group`(`id`),
-	FOREIGN KEY (user_id) 		REFERENCES  `User` (id),
+	FOREIGN KEY (group_id) 		REFERENCES `Group`(`id`) ON DELETE CASCADE,
+	FOREIGN KEY (user_id) 		REFERENCES  `User` (id) ON DELETE CASCADE,
 	PRIMARY KEY (group_id,user_id)
+);
+
+-- Create table Departments
+DROP TABLE IF EXISTS 	`Departments`;
+CREATE TABLE IF NOT EXISTS `Departments` (
+    department_id 			SMALLINT UNSIGNED AUTO_INCREMENT primary key,
+    department_name 		char(100)  NOT NULL
 );
 
 -- Create table Testing_Category
@@ -196,3 +210,17 @@ CREATE TABLE IF NOT EXISTS `Testing_Exam` (
 --    id 				TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 --    content 			NVARCHAR(50) NOT NULL UNIQUE
 -- );
+##create a procedure to test the connection
+drop PROCEDURE if EXISTS sp_delete_department;
+DELIMITER $$
+CREATE PROCEDURE sp_delete_department (
+				IN in_dept_id int 
+				)
+
+BEGIN
+				DELETE FROM `testingsystem`.`departments` WHERE (`department_id` = in_dept_id);
+END$$
+
+DELIMITER ;
+
+CALL testingsystem.sp_delete_department(1);

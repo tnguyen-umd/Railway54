@@ -1,0 +1,53 @@
+
+JAVA – Assignment 10
+
+
+
+Exercise 2: CRUD
+Tạo class DepartmentDao trong package backend để cung cấp các method 
+chuyên thao tác với table Department trong database. (các method cụ thể ở 
+question bên dưới)
+
+
+
+	
+
+	
+
+	
+	Question 8: 
+	Làm các chức năng CRUD tương tự với table Account
+	(Chú ý: trong chức năng getListAccount, getById thì phải in ra cả thông tin tên của department 
+
+
+	
+Exercise 4 (Optional): Transaction
+
+	Question 1: 
+	Tạo 1 method để thực thi các bước sau:
+		B1: xóa tất cả các nhân viên thuộc phòng ban 3
+		B2: xóa phòng ban 3
+		Với điều kiện: khi xóa B1 bị lỗi thì sẽ rollback lại 5
+
+Exercise 5: Tạo JdbcUtils
+
+	Question 1: 
+	Tạo method để test xem đã kết nối thành công tới sql chưa?
+	Gợi ý: Tạo method void isConnectedForTesting() và trong method sẽ thực hiện kết nối tới database và in ra "Connect success!", nếu không 
+	thì sẽ throw ra exception
+
+	Question 2: =====================================FINISHED=========================================
+	Tạo method để get Connect tới database.
+	Gợi ý: 
+		Tạo method void connect() và trong method sẽ thực hiện check đã có connect hiện tại chưa (null & closed).
+		Nếu chưa connect thì sẽ thực hiện connect và return về connect vừa lấy được
+		Nếu connect rồi thì chỉ cần return ra connect hiện tại (không cần phải connect lại tới database)
+		Trong khi thực hiện nếu có lỗi gì thì sẽ throw ra Exception (để message Exception cho phù hợp)
+		Và Các constant nên config ở trong file properties (VD như : username, password, driverName, message exception)
+	
+	Question 3: =====================================FINISHED=========================================
+	Tạo method để get disconnect tới database.
+	Gợi ý: 
+		Tạo method void disconnect() và trong method sẽ thực hiện check đã có connect hiện tại chưa (null & closed). 
+		Nếu chưa connect thì sẽ không làm gì cả Nếu đã connect rồi thì disconnect
+		Trong khi thực hiện nếu có lỗi gì thì sẽ throw ra Exception (để message Exception cho phù hợp)

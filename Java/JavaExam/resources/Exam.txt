@@ -1,0 +1,33 @@
+
+Học viên hãy viết chương trình với yêu cầu như sau:
+Có 2 loại loại User khác nhau:
+ Employee
+ Admin
+
+abstract User id, FullName, Email, Password
+
+
+ Admin có thêm thuộc tính: 
+	o ExpInYear (Số năm kinh nghiệm)
+	 Employee có thêm thuộc tính: 
+	o ProSkill (Kỹ năng chuyên môn: dev, test, java, sql, …)
+Questions
+Bạn hãy viết chương trình quản lý các ứng viên với yêu cầu cụ thể như sau.
+1. Khởi tạo thông tin của các User ở database.
+2. Viết function để in ra thông tin id và fullName, Email của tất cả User (in ra dạng table)===============DONE
+3. Viết function có đầu vào là id của User, sau đó in ra thông tin của User đó===============DONE
+4. Viết function có đầu vào là id của User, sau đó sẽ xóa toàn bộ thông tin của User đó===============DONE
+
+5. Viết chức năng login, User sẽ nhập Email và Password trên giao diện login
+Chương trình phải kiểm tra được các hợp lệ của các thuộc tính
+	 Email: đúng định dạng email. (VD: nguyen.vannam@vti.com.vn)
+	 Password: nhập từ 6 tới 12 ký tự, có ít nhất 1 ký tự viết hoa
+
+6. Viết chức năng tạo thêm User dành cho Admin theo hướng dẫn sau:
+Sau khi login xong, Admin nhập FullName, Email 
+của Employee, sau đó hệ 
+thống sẽ tự động tạo tài khoản cho employee đó với password là 123456
+Chương trình phải kiểm tra được các hợp lệ của các thuộc tính
+
+ Email: đúng định dạng email. (VD: nguyen.vannam@vti.com.vn)
+ Fullname: chỉ chứa chữ, không chứa bất kỳ kí tự đặc biệt nào

@@ -19,6 +19,14 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\tnguy\OneDrive\Documents\GitHub\Railway54\Java\src\AccountManagement"/>
+			<item value="C:\Users\tnguy\OneDrive\Documents\GitHub\Railway54\Java\AccountManagement"/>
+			<item value="C:\Users\tnguy\OneDrive\Documents\GitHub\Railway54\Java\TestingSystem_Assignment_10_JDBC"/>
+			<item value="C:\Users\tnguy\OneDrive\Documents\GitHub\Railway54\Java\Lecture_11"/>
+			<item value="C:\Users\tnguy\OneDrive\Documents\GitHub\Railway54\Java\src\TestingSystem_Assignment_5"/>
+			<item value="C:\Users\tnguy\OneDrive\Documents\GitHub\Railway54\Java\TestingSystem_Assignment_11"/>
+			<item value="C:\Users\tnguy\OneDrive\Documents\GitHub\Railway54\Java\TesingSystem_Assignment_11"/>
+			<item value="C:\Users\tnguy\OneDrive\Documents\GitHub\Railway54\Java\TestingSystem_Assignment_11\Java_Buoi_11_basic"/>
 			<item value="C:\Users\tnguy\OneDrive\Documents\GitHub\Railway54\Java\TestingSystem_Assignment_7"/>
 			<item value="C:\Users\tnguy\OneDrive\Documents\GitHub\Railway54\Java\Lectures\Assignment 7\IO Stream"/>
 			<item value="C:\Users\tnguy\OneDrive\Documents\GitHub\Railway54\Java\Lectures\Assignment 7\FileManager"/>
